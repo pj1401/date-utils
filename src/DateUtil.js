@@ -15,7 +15,7 @@ export default class DateUtil {
    * @returns {number} The number of days.
    */
   countDays (date) {
-    return 0
+    return null
   }
 
   /**
@@ -25,7 +25,7 @@ export default class DateUtil {
    * @returns {number} The week number.
    */
   getWeekNumber (date) {
-    return 0
+    return null
   }
 
   /**

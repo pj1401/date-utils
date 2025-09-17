@@ -7,7 +7,8 @@
   "scripts": {
     "lint": "npx eslint index.js ./src ./test || exit 0",
     "lint:fix": "npx eslint index.js ./src ./test --fix || exit 0",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx --node-options=--experimental-vm-modules jest || exit 0",
+    "test:only": "npx --node-options=--experimental-vm-modules jest -t"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@lnu/eslint-config": "^1.1.10"
+    "@lnu/eslint-config": "^1.1.10",
+    "jest": "^30.1.3"
   }
 }
