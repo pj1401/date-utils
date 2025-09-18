@@ -7,7 +7,7 @@
 
 import DateUtil from '../src/DateUtil.js'
 
-describe('count days', () => {
+describe('countDays', () => {
   test('Count days passed', () => {
     // Get the date from one week ago.
     const oneWeekAgo = new Date()
@@ -26,25 +26,42 @@ describe('count days', () => {
   })
 })
 
-describe('Get week number', () => {
+describe('getWeekNumber', () => {
   test('Get week number', () => {
-    const date = new Date(2025, 8, 17)
+    const date = new Date('2025-09-17')
     const weekNumber = 38
 
     const dateUtil = new DateUtil()
     expect(dateUtil.getWeekNumber(date)).toEqual(weekNumber)
   })
+
+  test('Get week number at the beginning of the year', () => {
+    const date = new Date('2025-01-01')
+
+    const dateUtil = new DateUtil()
+    expect(dateUtil.getWeekNumber(date)).toEqual(1)
+  })
+
+  test('Get week number at the end of the year', () => {
+    const date = new Date('2025-12-31')
+    const dateUtil = new DateUtil()
+    const result = dateUtil.getWeekNumber(date)
+
+    // TODO: Should also test that the week is not 2-51
+    expect(result).toBeGreaterThanOrEqual(1)
+    expect(result).toBeLessThanOrEqual(53)
+  })
 })
 
-describe('Get time between', () => {
+describe('getTimeBetween', () => {
   test('Get number of days between two dates', () => {})
   test('Get negative days if the date2 is earlier than date1', () => {})
 })
 
-describe('Add days', () => {
+describe('addDays', () => {
   test('Add days to a date', () => {})
 })
 
-describe('Remove days', () => {
+describe('removeDays', () => {
   test('Remove days from a date', () => {})
 })
