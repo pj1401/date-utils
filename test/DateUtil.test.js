@@ -26,4 +26,25 @@ describe('count days', () => {
   })
 })
 
-test('Get week number', () => {})
+describe('Get week number', () => {
+  test('Get week number', () => {
+    const date = new Date(2025, 8, 17)
+    const weekNumber = 38
+
+    const dateUtil = new DateUtil()
+    expect(dateUtil.getWeekNumber(date)).toEqual(weekNumber)
+  })
+})
+
+describe('Get time between', () => {
+  test('Get number of days between two dates', () => {})
+  test('Get negative days if the date2 is earlier than date1', () => {})
+})
+
+describe('Add days', () => {
+  test('Add days to a date', () => {})
+})
+
+describe('Remove days', () => {
+  test('Remove days from a date', () => {})
+})
