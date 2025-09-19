@@ -4,6 +4,8 @@
  * @version 1.0.0
  */
 
+import DayCounter from './DayCounter.js'
+
 /**
  * Collection of date utils.
  */
@@ -15,7 +17,8 @@ export default class DateUtil {
    * @returns {number} The number of days.
    */
   countDays (date) {
-    return null
+    const dayCounter = new DayCounter()
+    return dayCounter.getDays(date)
   }
 
   /**
