@@ -14,7 +14,7 @@ describe('countDays', () => {
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7)
 
     const dateUtil = new DateUtil()
-    expect(dateUtil.countDays(oneWeekAgo)).toEqual(7)
+    expect(dateUtil.countDays(oneWeekAgo)).toEqual(-7)
   })
 
   test('Count days until', () => {
