@@ -50,6 +50,24 @@ describe('getWeekNumber', () => {
     // The last week can be numbered 52 or 53, or 1 if the majority of its days are in January.
     expect([1, 52, 53]).toContain(result)
   })
+
+  test('1 January 2021', () => {
+    const date = new Date('2021-01-01')
+    const dateUtil = new DateUtil()
+    expect(dateUtil.getWeekNumber(date)).toEqual(53)
+  })
+
+  test('4 January 2021', () => {
+    const date = new Date('2021-01-04')
+    const dateUtil = new DateUtil()
+    expect(dateUtil.getWeekNumber(date)).toEqual(1)
+  })
+
+  test('1 January 2027', () => {
+    const date = new Date('2027-01-01')
+    const dateUtil = new DateUtil()
+    expect(dateUtil.getWeekNumber(date)).toEqual(53)
+  })
 })
 
 describe('getTimeBetween', () => {
