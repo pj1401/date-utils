@@ -47,9 +47,8 @@ describe('getWeekNumber', () => {
     const dateUtil = new DateUtil()
     const result = dateUtil.getWeekNumber(date)
 
-    // TODO: Should also test that the week is not 2-51
-    expect(result).toBeGreaterThanOrEqual(1)
-    expect(result).toBeLessThanOrEqual(53)
+    // The last week can be numbered 52 or 53, or 1 if the majority of its days are in January.
+    expect([1, 52, 53]).toContain(result)
   })
 })
 
