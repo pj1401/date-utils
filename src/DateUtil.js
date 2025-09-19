@@ -5,6 +5,7 @@
  */
 
 import DayCounter from './DayCounter.js'
+import WeekCounter from './WeekCounter.js'
 
 /**
  * Collection of date utils.
@@ -28,7 +29,8 @@ export default class DateUtil {
    * @returns {number} The week number.
    */
   getWeekNumber (date) {
-    return null
+    const weekCounter = new WeekCounter()
+    return weekCounter.getWeekNumber(date)
   }
 
   /**
