@@ -22,8 +22,18 @@ export default class WeekCounter {
      */
     const dayOfTheYear = this.#getDayOfTheYear(date)
     const dayOfTheWeek = this.#getDayOfTheWeek(date)
-    const week = (10 + (dayOfTheYear - dayOfTheWeek)) / 7
-    return week
+    const week = Math.trunc((10 + (dayOfTheYear - dayOfTheWeek)) / 7)
+    let weekOfTheYear = week
+
+    // Check if the calculated week is the last week or first week of the year.
+    if (week < 1) {
+      // Get the number of weeks from the preceding year.
+      weekOfTheYear = this.#getWeeksPerYear(date.getFullYear() - 1)
+    } else if (week === 53) {
+      // TODO: Check if it is in week 1 of the following year.
+      weekOfTheYear = 1
+    }
+    return weekOfTheYear
   }
 
   /**
@@ -48,5 +58,34 @@ export default class WeekCounter {
   #getDayOfTheWeek (date) {
     // getDay() returns 0 for Sunday, but Sunday has to be 7 for the formula to work.
     return date.getDay() !== 0 ? date.getDay() : 7
+  }
+
+  /**
+   * Get the number of weeks in a year.
+   *
+   * @param {number} year - The year.
+   * @returns {number} The number of weeks in the year.
+   */
+  #getWeeksPerYear (year) {
+    const firstDay = new Date(`${year}-01-01`)
+    const lastDay = new Date(`${year}-12-31`)
+    const firstWeekDay = firstDay.getDay()
+    const lastWeekDay = lastDay.getDay()
+    let numberOfWeeks = 52
+    if (firstWeekDay === 4 || (firstWeekDay === 3 && this.#isLeapYear(year)) ||
+    lastWeekDay === 4 || (lastWeekDay === 5 && this.#isLeapYear(year))) {
+      numberOfWeeks = 53
+    }
+    return numberOfWeeks
+  }
+
+  /**
+   * Returns true if the year is a leap year.
+   *
+   * @param {number} year - The year.
+   * @returns {boolean} True if the year is a leap year.
+   */
+  #isLeapYear (year) {
+    return ((year % 4) === 0 && (year % 100) !== 0) || ((year % 400) === 0)
   }
 }
