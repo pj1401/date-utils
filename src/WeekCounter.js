@@ -67,16 +67,72 @@ export default class WeekCounter {
    * @returns {number} The number of weeks in the year.
    */
   #getWeeksPerYear (year) {
+    return this.#has53weeks(year) ? 53 : 52
+  }
+
+  /**
+   * Returns true if the year has 53 weeks.
+   *
+   * @param {number} year - A number representing the year.
+   * @returns {boolean} True if the year has 53 weeks.
+   */
+  #has53weeks (year) {
+    /**
+     * @see https://en.wikipedia.org/wiki/ISO_week_date#Weeks_per_year
+     */
     const firstDay = new Date(`${year}-01-01`)
     const lastDay = new Date(`${year}-12-31`)
-    const firstWeekDay = firstDay.getDay()
-    const lastWeekDay = lastDay.getDay()
-    let numberOfWeeks = 52
-    if (firstWeekDay === 4 || (firstWeekDay === 3 && this.#isLeapYear(year)) ||
-    lastWeekDay === 4 || (lastWeekDay === 5 && this.#isLeapYear(year))) {
-      numberOfWeeks = 53
+    return this.#isThursday(firstDay) || (this.#isWednesday(firstDay) && this.#isLeapYear(year)) ||
+    this.#isThursday(lastDay) || (this.#isFriday(lastDay) && this.#isLeapYear(year))
+  }
+
+  /**
+   * Get the day of the week as a readable string.
+   *
+   * @param {Date} date - The specified date.
+   * @returns {string} The day of the week.
+   */
+  #getWeekdayString (date) {
+    const weekdayStringMap = {
+      0: 'Sunday',
+      1: 'Monday',
+      2: 'Tuesday',
+      3: 'Wednesday',
+      4: 'Thursday',
+      5: 'Friday',
+      6: 'Saturday'
     }
-    return numberOfWeeks
+    return weekdayStringMap[date.getDay()]
+  }
+
+  /**
+   * Determines if the date is on a Wednesday.
+   *
+   * @param {Date} date - The specified date.
+   * @returns {boolean} True if the weekday is Wednesday.
+   */
+  #isWednesday (date) {
+    return date.getDay() === 3
+  }
+
+  /**
+   * Determines if the date is on a Thursday.
+   *
+   * @param {Date} date - The specified date.
+   * @returns {boolean} True if the weekday is Thursday.
+   */
+  #isThursday (date) {
+    return date.getDay() === 4
+  }
+
+  /**
+   * Determines if the date is on a Friday.
+   *
+   * @param {Date} date - The specified date.
+   * @returns {boolean} True if the weekday is Friday.
+   */
+  #isFriday (date) {
+    return date.getDay() === 5
   }
 
   /**
@@ -86,6 +142,9 @@ export default class WeekCounter {
    * @returns {boolean} True if the year is a leap year.
    */
   #isLeapYear (year) {
+    /**
+     * @see https://en.wikipedia.org/wiki/Leap_year
+     */
     return ((year % 4) === 0 && (year % 100) !== 0) || ((year % 400) === 0)
   }
 }
