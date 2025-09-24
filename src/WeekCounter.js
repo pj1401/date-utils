@@ -82,8 +82,14 @@ export default class WeekCounter {
      */
     const firstDay = new Date(`${year}-01-01`)
     const lastDay = new Date(`${year}-12-31`)
-    return this.#isThursday(firstDay) || (this.#isWednesday(firstDay) && this.#isLeapYear(year)) ||
-    this.#isThursday(lastDay) || (this.#isFriday(lastDay) && this.#isLeapYear(year))
+
+    const firstDayIsThursday = this.#getWeekdayString(firstDay) === 'Thursday'
+    const firstDayIsWednesday = this.#getWeekdayString(firstDay) === 'Wednesday'
+    const lastDayIsThursday = this.#getWeekdayString(lastDay) === 'Thursday'
+    const lastDayIsFriday = this.#getWeekdayString(lastDay) === 'Friday'
+
+    return firstDayIsThursday || (firstDayIsWednesday && this.#isLeapYear(year)) ||
+    lastDayIsThursday || (lastDayIsFriday && this.#isLeapYear(year))
   }
 
   /**
@@ -103,36 +109,6 @@ export default class WeekCounter {
       6: 'Saturday'
     }
     return weekdayStringMap[date.getDay()]
-  }
-
-  /**
-   * Determines if the date is on a Wednesday.
-   *
-   * @param {Date} date - The specified date.
-   * @returns {boolean} True if the weekday is Wednesday.
-   */
-  #isWednesday (date) {
-    return date.getDay() === 3
-  }
-
-  /**
-   * Determines if the date is on a Thursday.
-   *
-   * @param {Date} date - The specified date.
-   * @returns {boolean} True if the weekday is Thursday.
-   */
-  #isThursday (date) {
-    return date.getDay() === 4
-  }
-
-  /**
-   * Determines if the date is on a Friday.
-   *
-   * @param {Date} date - The specified date.
-   * @returns {boolean} True if the weekday is Friday.
-   */
-  #isFriday (date) {
-    return date.getDay() === 5
   }
 
   /**
