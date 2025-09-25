@@ -31,7 +31,7 @@ export default class WeekCounter {
       weekOfTheYear = this.#getWeeksPerYear(date.getFullYear() - 1)
     } else if (week === 53) {
       // TODO: Check if it is in week 1 of the following year.
-      weekOfTheYear = 1
+      this.#endsOnWeek1(date.getFullYear()) ? weekOfTheYear = 1 : weekOfTheYear = week
     }
     return weekOfTheYear
   }
@@ -59,6 +59,13 @@ export default class WeekCounter {
     // getDay() returns 0 for Sunday, but Sunday has to be 7 for the formula to work.
     return date.getDay() !== 0 ? date.getDay() : 7
   }
+
+  /**
+   * Returns true if the year ends on week 1 of the following year.
+   *
+   * @param {number} year  - A number representing the year.
+   */
+  #endsOnWeek1 (year) {}
 
   /**
    * Get the number of weeks in a year.
