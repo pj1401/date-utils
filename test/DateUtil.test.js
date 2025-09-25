@@ -42,28 +42,37 @@ describe('getWeekNumber', () => {
     expect(dateUtil.getWeekNumber(date)).toEqual(1)
   })
 
-  test('Get week number at the end of the year', () => {
-    const date = new Date('2025-12-31')
+  test('31 December 2023, Sunday, returns 52', () => {
+    const date = new Date('2023-12-31')
     const dateUtil = new DateUtil()
-    const result = dateUtil.getWeekNumber(date)
-
-    // The last week can be numbered 52 or 53, or 1 if the majority of its days are in January.
-    expect([1, 52, 53]).toContain(result)
+    expect(dateUtil.getWeekNumber(date)).toEqual(52)
   })
 
-  test('1 January 2021', () => {
+  test('31 December 2025, Wednesday, returns 1', () => {
+    const date = new Date('2025-12-31')
+    const dateUtil = new DateUtil()
+    expect(dateUtil.getWeekNumber(date)).toEqual(1)
+  })
+
+  test('1 January 2021, Friday, returns 53', () => {
     const date = new Date('2021-01-01')
     const dateUtil = new DateUtil()
     expect(dateUtil.getWeekNumber(date)).toEqual(53)
   })
 
-  test('4 January 2021', () => {
+  test('4 January 2021, Monday, returns 1', () => {
     const date = new Date('2021-01-04')
     const dateUtil = new DateUtil()
     expect(dateUtil.getWeekNumber(date)).toEqual(1)
   })
 
-  test('1 January 2027', () => {
+  test('1 January 2024, Monday, returns 1', () => {
+    const date = new Date('2024-01-01')
+    const dateUtil = new DateUtil()
+    expect(dateUtil.getWeekNumber(date)).toEqual(1)
+  })
+
+  test('1 January 2027, Friday, returns 53', () => {
     const date = new Date('2027-01-01')
     const dateUtil = new DateUtil()
     expect(dateUtil.getWeekNumber(date)).toEqual(53)
