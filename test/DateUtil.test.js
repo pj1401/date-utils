@@ -178,7 +178,7 @@ describe('getDaysBetween', () => {
   })
 
   test('Over one month between dates, returns 32', () => {
-    const date1 = new Date('2024-08-14')
+    const date1 = new Date('2025-08-14')
     const date2 = new Date('2025-09-15')
 
     const dateUtil = new DateUtil()
