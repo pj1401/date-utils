@@ -195,7 +195,24 @@ describe('getDaysBetween', () => {
 })
 
 describe('addDays', () => {
-  test('Add days to a date', () => { })
+  test('Add days to a date', () => {
+    const date = new Date('2025-01-30')
+    const dateUtil = new DateUtil()
+    const result = dateUtil.addDays(date, 5)
+
+    expect(result.getDate()).toEqual(4)
+    expect(result.getMonth()).toEqual(1) // February gives 1
+  })
+
+  test('Handle turn of the year', () => {
+    const date = new Date('2025-12-31')
+    const dateUtil = new DateUtil()
+    const result = dateUtil.addDays(date, 2)
+
+    expect(result.getDate()).toEqual(2)
+    expect(result.getMonth()).toEqual(0)
+    expect(result.getFullYear()).toEqual(2026) // Expected: 2 January 2026
+  })
 })
 
 describe('removeDays', () => {
