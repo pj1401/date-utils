@@ -11,6 +11,20 @@ import WeekCounter from './WeekCounter.js'
  * Collection of date utils.
  */
 export default class DateUtil {
+  #dayCounter
+  #weekCounter
+
+  /**
+   * Initialises a new instance.
+   *
+   * @param {DayCounter} dayCounter - A day counter instantiated from a class with the same capabilities as DayCounter.
+   * @param {WeekCounter} weekCounter - A week counter instantiated from a class with the same capabilities as WeekCounter.
+   */
+  constructor (dayCounter = new DayCounter(), weekCounter = new WeekCounter()) {
+    this.#dayCounter = dayCounter
+    this.#weekCounter = weekCounter
+  }
+
   /**
    * Count days passed or days until the specified date.
    *
@@ -18,8 +32,7 @@ export default class DateUtil {
    * @returns {number} The number of days.
    */
   countDays (date) {
-    const dayCounter = new DayCounter()
-    return dayCounter.getDays(date)
+    return this.#dayCounter.getDays(date)
   }
 
   /**
@@ -29,8 +42,7 @@ export default class DateUtil {
    * @returns {number} The week number.
    */
   getWeekNumber (date) {
-    const weekCounter = new WeekCounter()
-    return weekCounter.getWeekNumber(date)
+    return this.#weekCounter.getWeekNumber(date)
   }
 
   /**
@@ -38,8 +50,10 @@ export default class DateUtil {
    *
    * @param {Date} date1 - The first date.
    * @param {Date} date2 - The second date.
+   * @returns {number} The number of days between the dates.
    */
   getDaysBetween (date1, date2) {
+    return this.#dayCounter.getDaysBetween(date1, date2)
   }
 
   /**

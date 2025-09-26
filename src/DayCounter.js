@@ -37,4 +37,12 @@ export default class DayCounter {
     const targetDate = new Date(date)
     return targetDate.setHours(0, 0, 0, 0)
   }
+
+  /**
+   * Get the difference between two dates.
+   *
+   * @param {Date} date1 - The first date.
+   * @param {Date} date2 - The second date.
+   */
+  getDaysBetween (date1, date2) {}
 }
