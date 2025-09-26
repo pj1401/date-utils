@@ -160,9 +160,38 @@ describe('getWeekNumber', () => {
   })
 })
 
-describe('getTimeBetween', () => {
-  test('Get number of days between two dates', () => { })
-  test('Get negative days if the date2 is earlier than date1', () => { })
+describe('getDaysBetween', () => {
+  test('Get number of days between two dates', () => {
+    const date1 = new Date('2025-09-15')
+    const date2 = new Date('2025-09-22')
+
+    const dateUtil = new DateUtil()
+    expect(dateUtil.getDaysBetween(date1, date2)).toEqual(7)
+  })
+
+  test('Get negative days if the date2 is earlier than date1', () => {
+    const date1 = new Date('2025-09-15')
+    const date2 = new Date('2025-09-08')
+
+    const dateUtil = new DateUtil()
+    expect(dateUtil.getDaysBetween(date1, date2)).toEqual(-7)
+  })
+
+  test('Over one month between dates, returns 32', () => {
+    const date1 = new Date('2024-08-14')
+    const date2 = new Date('2025-09-15')
+
+    const dateUtil = new DateUtil()
+    expect(dateUtil.getDaysBetween(date1, date2)).toEqual(32)
+  })
+
+  test('Over one year between dates, returns 367', () => {
+    const date1 = new Date('2024-09-13')
+    const date2 = new Date('2025-09-15')
+
+    const dateUtil = new DateUtil()
+    expect(dateUtil.getDaysBetween(date1, date2)).toEqual(367)
+  })
 })
 
 describe('addDays', () => {

@@ -39,7 +39,7 @@ export default class DateUtil {
    * @param {Date} date1 - The first date.
    * @param {Date} date2 - The second date.
    */
-  getTimeBetween (date1, date2) {
+  getDaysBetween (date1, date2) {
   }
 
   /**
