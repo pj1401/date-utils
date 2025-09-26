@@ -43,6 +43,12 @@ export default class DayCounter {
    *
    * @param {Date} date1 - The first date.
    * @param {Date} date2 - The second date.
+   * @returns {number} The number of days between the dates.
    */
-  getDaysBetween (date1, date2) {}
+  getDaysBetween (date1, date2) {
+    // Use UTC to avoid daylight savings problems.
+    const date1UTC = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate())
+    const date2UTC = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate())
+    return (date2UTC - date1UTC) / MILLISECONDS_PER_DAY
+  }
 }
