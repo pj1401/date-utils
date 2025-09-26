@@ -44,7 +44,7 @@ export default class WeekCounter {
    */
   #getDayOfTheYear (date) {
     // Use UTC to avoid daylight savings problems.
-    const startOfTheYear = Date.UTC(date.getFullYear(), 0, 1)
+    const startOfTheYear = Date.UTC(date.getFullYear(), 0, 0)
     const targetDate = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
     return (targetDate - startOfTheYear) / MILLISECONDS_PER_DAY
   }
