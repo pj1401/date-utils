@@ -30,7 +30,7 @@ export default class WeekCounter {
       // Get the number of weeks from the preceding year.
       weekOfTheYear = this.#getWeeksPerYear(date.getFullYear() - 1)
     } else if (week === 53) {
-      // TODO: Check if it is in week 1 of the following year.
+      // Check if it is in week 1 of the following year.
       this.#endsOnWeek1(date.getFullYear()) ? weekOfTheYear = 1 : weekOfTheYear = week
     }
     return weekOfTheYear
@@ -61,11 +61,21 @@ export default class WeekCounter {
   }
 
   /**
-   * Returns true if the year ends on week 1 of the following year.
+   * Returns true if 31 December is in week 1 of the following year.
    *
    * @param {number} year  - A number representing the year.
+   * @returns {boolean} True if 31 December is in week 1 of the following year.
    */
-  #endsOnWeek1 (year) {}
+  #endsOnWeek1 (year) {
+    const lastDay = new Date(`${year}-12-31`)
+    const weekDay = this.#getWeekdayString(lastDay)
+
+    /**
+     * @see https://en.wikipedia.org/wiki/ISO_week_date#Last_week
+     * If 31 December is on a Monday, Tuesday, or Wednesday it is in W01 of the next year.
+     */
+    return weekDay === 'Monday' || weekDay === 'Tuesday' || weekDay === 'Wednesday'
+  }
 
   /**
    * Get the number of weeks in a year.
@@ -127,6 +137,7 @@ export default class WeekCounter {
   #isLeapYear (year) {
     /**
      * @see https://en.wikipedia.org/wiki/Leap_year
+     * each year that is a multiple of 4, except for years evenly divisible by 100 but not by 400
      */
     return ((year % 4) === 0 && (year % 100) !== 0) || ((year % 400) === 0)
   }
