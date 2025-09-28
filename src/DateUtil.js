@@ -60,8 +60,11 @@ export default class DateUtil {
    * Add days to the date.
    *
    * @param {Date} date - The specified date.
+   * @param {number} numberOfDays - The number of days to add.
+   * @returns {Date} The date with the added days.
    */
-  addDays (date) {
+  addDays (date, numberOfDays) {
+    return this.#dayCounter.addDays(date, numberOfDays)
   }
 
   /**
