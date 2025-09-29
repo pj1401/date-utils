@@ -51,4 +51,17 @@ export default class DayCounter {
     const date2UTC = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate())
     return (date2UTC - date1UTC) / MILLISECONDS_PER_DAY
   }
+
+  /**
+   * Add days to the date.
+   *
+   * @param {Date} date - The specified date.
+   * @param {number} numberOfDays - The number of days to add.
+   * @returns {Date} The date with the added days.
+   */
+  addDays (date, numberOfDays) {
+    const targetDate = new Date(date)
+    targetDate.setDate(targetDate.getDate() + numberOfDays)
+    return targetDate
+  }
 }
