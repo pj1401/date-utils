@@ -95,6 +95,16 @@ export default class DateUtil {
   }
 
   /**
+   * Get the start of the week.
+   *
+   * @param {Date} date - The specified date.
+   * @returns {Date} The start of the week.
+   */
+  startOfWeek (date) {
+    return this.#weekCounter.startOfWeek(date)
+  }
+
+  /**
    * Add days to the date.
    *
    * @param {Date} date - The specified date.
