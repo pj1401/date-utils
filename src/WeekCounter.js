@@ -138,4 +138,39 @@ export default class WeekCounter {
      */
     return ((year % 4) === 0 && (year % 100) !== 0) || ((year % 400) === 0)
   }
+
+  /**
+   * Get the start of the week.
+   *
+   * @param {Date} date - The specified date.
+   * @returns {Date} The start of the week.
+   */
+  startOfWeek (date) {
+    const weekday = date.getDay()
+    const weekStart = new Date(date)
+    switch (weekday) {
+      case 0: // Sunday
+        weekStart.setDate(date.getDate() - 6)
+        break
+      case 2: // Tuesday
+        weekStart.setDate(date.getDate() - 1)
+        break
+      case 3:
+        weekStart.setDate(date.getDate() - 2)
+        break
+      case 4:
+        weekStart.setDate(date.getDate() - 3)
+        break
+      case 5:
+        weekStart.setDate(date.getDate() - 4)
+        break
+      case 6: // Saturday
+        weekStart.setDate(date.getDate() - 5)
+        break
+      default:
+        break
+    }
+    weekStart.setHours(0, 0, 0, 0)
+    return weekStart
+  }
 }
