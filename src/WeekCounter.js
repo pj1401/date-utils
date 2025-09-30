@@ -149,10 +149,24 @@ export default class WeekCounter {
     const weekday = date.getDay()
     const weekStart = new Date(date)
     switch (weekday) {
-      case 0:
+      case 0: // Sunday
         weekStart.setDate(date.getDate() - 6)
         break
-        // TODO: Add more cases, or just fix this.
+      case 2: // Tuesday
+        weekStart.setDate(date.getDate() - 1)
+        break
+      case 3:
+        weekStart.setDate(date.getDate() - 2)
+        break
+      case 4:
+        weekStart.setDate(date.getDate() - 3)
+        break
+      case 5:
+        weekStart.setDate(date.getDate() - 4)
+        break
+      case 6: // Saturday
+        weekStart.setDate(date.getDate() - 5)
+        break
       default:
         break
     }
