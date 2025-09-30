@@ -137,6 +137,18 @@ describe('DateUtil', () => {
     })
   })
 
+  describe('endOfWeek', () => {
+    test('Get the end of the week, 30 September 2025, Tuesday, returns 2025-10-05', () => {
+      const date = new Date('2025-09-30')
+      const weekEnd = new Date('2025-10-05')
+      weekEnd.setHours(0, 0, 0, 0)
+      const dateUtil = new DateUtil()
+
+      // Consider Sunday the end of the week.
+      expect(dateUtil.endOfWeek(date)).toEqual(weekEnd)
+    })
+  })
+
   describe('addDays', () => {
     test('Add days to a date', () => {
       const date = new Date('2025-01-30')

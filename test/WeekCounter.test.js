@@ -83,6 +83,17 @@ describe('WeekCounter', () => {
     })
   })
 
+  describe('endOfWeek', () => {
+    test('29 December 2025, Monday, the week ends in the following year', () => {
+      const date = new Date('2025-12-29')
+      const weekEnd = new Date('2026-01-04')
+      weekEnd.setHours(0, 0, 0, 0)
+      const weekCounter = new WeekCounter()
+
+      expect(weekCounter.endOfWeek(date)).toEqual(weekEnd)
+    })
+  })
+
   describe('getWeekNumber', () => {
     describe('Beginning of the year', () => {
       test('1 January 2021, Friday, returns 53', () => {
