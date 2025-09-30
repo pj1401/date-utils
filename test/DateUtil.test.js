@@ -125,6 +125,18 @@ describe('DateUtil', () => {
     })
   })
 
+  describe('startOfWeek', () => {
+    test('Get the start of the week', () => {
+      const date = new Date('2025-09-30')
+      const weekStart = new Date('2025-09-29')
+      weekStart.setHours(0, 0, 0, 0)
+      const dateUtil = new DateUtil()
+
+      // Consider Monday the start of the week.
+      expect(dateUtil.startOfWeek(date)).toEqual(weekStart)
+    })
+  })
+
   describe('addDays', () => {
     test('Add days to a date', () => {
       const date = new Date('2025-01-30')

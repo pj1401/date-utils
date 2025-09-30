@@ -6,8 +6,38 @@
  */
 
 import DateUtil from '../src/DateUtil.js'
+import WeekCounter from '../src/WeekCounter.js'
 
 describe('WeekCounter', () => {
+  describe('startOfWeek', () => {
+    test('Get the start of the week after daylight savings starts', () => {
+      const date = new Date('2025-03-30')
+      const weekStart = new Date('2025-03-24')
+      weekStart.setHours(0, 0, 0, 0)
+      const weekCounter = new WeekCounter()
+
+      expect(weekCounter.startOfWeek(date)).toEqual(weekStart)
+    })
+
+    test('DST ends', () => {
+      const date = new Date('2025-10-26')
+      const weekStart = new Date('2025-10-20')
+      weekStart.setHours(0, 0, 0, 0)
+      const weekCounter = new WeekCounter()
+
+      expect(weekCounter.startOfWeek(date)).toEqual(weekStart)
+    })
+
+    test('The week starts in the preceding year', () => {
+      const date = new Date('2026-01-01')
+      const weekStart = new Date('2025-12-29')
+      weekStart.setHours(0, 0, 0, 0)
+      const weekCounter = new WeekCounter()
+
+      expect(weekCounter.startOfWeek(date)).toEqual(weekStart)
+    })
+  })
+
   describe('getWeekNumber', () => {
     describe('Beginning of the year', () => {
       test('1 January 2021, Friday, returns 53', () => {
