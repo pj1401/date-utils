@@ -4,6 +4,8 @@
  * @version 1.0.0
  */
 
+import TimeInterval from './TimeInterval.js'
+
 const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24
 
 /**
@@ -72,6 +74,17 @@ export default class DayCounter {
     const date1UTC = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate())
     const date2UTC = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate())
     return (date2UTC - date1UTC) / MILLISECONDS_PER_DAY
+  }
+
+  /**
+   * Check if a date is in the interval.
+   *
+   * @param {Date} date - The date to check.
+   * @param {TimeInterval} interval - The time interval.
+   * @returns {boolean} True if the date is in the interval.
+   */
+  isBetween (date, interval) {
+    return date >= interval.startDate && date <= interval.endDate
   }
 
   /**
