@@ -64,4 +64,17 @@ export default class DayCounter {
     targetDate.setDate(targetDate.getDate() + numberOfDays)
     return targetDate
   }
+
+  /**
+   * Remove days from the date.
+   *
+   * @param {Date} date - The specified date.
+   * @param {number} numberOfDays - The number of days to remove.
+   * @returns {Date} The date with the added days.
+   */
+  removeDays (date, numberOfDays) {
+    const targetDate = new Date(date)
+    targetDate.setDate(targetDate.getDate() - numberOfDays)
+    return targetDate
+  }
 }

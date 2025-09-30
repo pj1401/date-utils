@@ -216,5 +216,12 @@ describe('addDays', () => {
 })
 
 describe('removeDays', () => {
-  test('Remove days from a date', () => { })
+  test('Remove days from a date', () => {
+    const date = new Date('2025-01-03')
+    const dateUtil = new DateUtil()
+    const result = dateUtil.removeDays(date, 10)
+
+    expect(result.getFullYear()).toEqual(2024)
+    expect(result.getMonth()).toEqual(11) // Expected: December 2024
+  })
 })

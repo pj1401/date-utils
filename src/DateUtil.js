@@ -71,7 +71,10 @@ export default class DateUtil {
    * Remove days from the date.
    *
    * @param {Date} date - The specified date.
+   * @param {number} numberOfDays - The number of days to remove.
+   * @returns {Date} The date with the added days.
    */
-  removeDays (date) {
+  removeDays (date, numberOfDays) {
+    return this.#dayCounter.removeDays(date, numberOfDays)
   }
 }
