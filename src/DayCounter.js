@@ -24,7 +24,16 @@ export default class DayCounter {
     const timeDifference = targetDate - dateNow
 
     const days = timeDifference / MILLISECONDS_PER_DAY
-    return days >= 0 ? Math.ceil(days) : Math.floor(days)
+
+    let dayCount = 0
+    if (days >= 0) {
+      // Round up if the date is in the future, to include part of a day.
+      dayCount = Math.ceil(days)
+    } else {
+      // Round down if the date is in the past. Only count whole days.
+      dayCount = Math.floor(days)
+    }
+    return dayCount
   }
 
   /**
