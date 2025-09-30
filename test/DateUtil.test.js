@@ -79,6 +79,32 @@ describe('DateUtil', () => {
     })
   })
 
+  describe('getQuarter', () => {
+    test('29 February 2024, returns 1', () => {
+      const date = new Date('2024-02-29')
+      const dateUtil = new DateUtil()
+      expect(dateUtil.getQuarter(date)).toEqual(1)
+    })
+
+    test('1 April 2025, returns 2', () => {
+      const date = new Date('2025-04-01')
+      const dateUtil = new DateUtil()
+      expect(dateUtil.getQuarter(date)).toEqual(2)
+    })
+
+    test('1 July 2025, returns 3', () => {
+      const date = new Date('2025-07-01')
+      const dateUtil = new DateUtil()
+      expect(dateUtil.getQuarter(date)).toEqual(3)
+    })
+
+    test('1 October 2025, returns 4', () => {
+      const date = new Date('2025-10-01')
+      const dateUtil = new DateUtil()
+      expect(dateUtil.getQuarter(date)).toEqual(4)
+    })
+  })
+
   describe('isBetween', () => {
     test('Date is in the interval', () => {
       const date = new Date('2025-09-30')
