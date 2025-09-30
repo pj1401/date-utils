@@ -160,6 +160,14 @@ describe('getWeekNumber', () => {
   })
 })
 
+describe('getOrdinalDate', () => {
+  test('30 September 2025, returns 273', () => {
+    const date = new Date('2025-09-30')
+    const dateUtil = new DateUtil()
+    expect(dateUtil.getOrdinalDate(date)).toEqual(273)
+  })
+})
+
 describe('getDaysBetween', () => {
   test('Get number of days between two dates', () => {
     const date1 = new Date('2025-09-15')

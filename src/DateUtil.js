@@ -47,6 +47,16 @@ export default class DateUtil {
   }
 
   /**
+   * Get the day of the year from a date.
+   *
+   * @param {Date} date - The specified date.
+   * @returns {number} A number that represents the day of the year.
+   */
+  getOrdinalDate (date) {
+    return this.#dayCounter.getDayOfTheYear(date)
+  }
+
+  /**
    * Get the difference between two dates.
    *
    * @param {Date} date1 - The first date.
