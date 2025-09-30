@@ -5,7 +5,7 @@
  * @version 1.0.0
  */
 
-import DayCounter from '../src/DayCounter'
+import DayCounter from '../src/DayCounter.js'
 
 describe('DayCounter', () => {
   describe('addDays', () => {
