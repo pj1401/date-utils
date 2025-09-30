@@ -10,7 +10,7 @@ import WeekCounter from '../src/WeekCounter.js'
 
 describe('WeekCounter', () => {
   describe('startOfWeek', () => {
-    test('Get the start of the week after daylight savings starts', () => {
+    test('Get the start of the week after daylight savings starts, Sunday', () => {
       const date = new Date('2025-03-30')
       const weekStart = new Date('2025-03-24')
       weekStart.setHours(0, 0, 0, 0)
@@ -19,7 +19,7 @@ describe('WeekCounter', () => {
       expect(weekCounter.startOfWeek(date)).toEqual(weekStart)
     })
 
-    test('DST ends', () => {
+    test('DST ends, Sunday', () => {
       const date = new Date('2025-10-26')
       const weekStart = new Date('2025-10-20')
       weekStart.setHours(0, 0, 0, 0)
@@ -28,9 +28,54 @@ describe('WeekCounter', () => {
       expect(weekCounter.startOfWeek(date)).toEqual(weekStart)
     })
 
-    test('The week starts in the preceding year', () => {
+    test('The week starts in the preceding year, Thursday', () => {
       const date = new Date('2026-01-01')
       const weekStart = new Date('2025-12-29')
+      weekStart.setHours(0, 0, 0, 0)
+      const weekCounter = new WeekCounter()
+
+      expect(weekCounter.startOfWeek(date)).toEqual(weekStart)
+    })
+
+    test('1 September, Monday', () => {
+      const date = new Date('2025-09-01')
+      const weekStart = new Date('2025-09-01')
+      weekStart.setHours(0, 0, 0, 0)
+      const weekCounter = new WeekCounter()
+
+      expect(weekCounter.startOfWeek(date)).toEqual(weekStart)
+    })
+
+    test('1 July, Tuesday', () => {
+      const date = new Date('2025-07-01')
+      const weekStart = new Date('2025-06-30')
+      weekStart.setHours(0, 0, 0, 0)
+      const weekCounter = new WeekCounter()
+
+      expect(weekCounter.startOfWeek(date)).toEqual(weekStart)
+    })
+
+    test('2 April, Wednesday', () => {
+      const date = new Date('2025-04-02')
+      const weekStart = new Date('2025-03-31')
+      weekStart.setHours(0, 0, 0, 0)
+      const weekCounter = new WeekCounter()
+
+      expect(weekCounter.startOfWeek(date)).toEqual(weekStart)
+    })
+
+    test('3 October, Friday', () => {
+      const date = new Date('2025-10-03')
+      const weekStart = new Date('2025-09-29')
+      weekStart.setHours(0, 0, 0, 0)
+      const weekCounter = new WeekCounter()
+
+      expect(weekCounter.startOfWeek(date)).toEqual(weekStart)
+    })
+
+    test('2 March 2024, Saturday', () => {
+      const date = new Date('2024-03-02')
+      const weekStart = new Date('2024-02-26')
       weekStart.setHours(0, 0, 0, 0)
       const weekCounter = new WeekCounter()
 
