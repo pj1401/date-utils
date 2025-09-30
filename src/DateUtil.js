@@ -5,6 +5,7 @@
  */
 
 import DayCounter from './DayCounter.js'
+import TimeInterval from './TimeInterval.js'
 import WeekCounter from './WeekCounter.js'
 
 /**
@@ -65,6 +66,18 @@ export default class DateUtil {
    */
   getDaysBetween (date1, date2) {
     return this.#dayCounter.getDaysBetween(date1, date2)
+  }
+
+  /**
+   * Check if a date is in the interval.
+   *
+   * @param {Date} date - The date to check.
+   * @param {Date} startDate - The start date.
+   * @param {Date} endDate - The end date.
+   * @returns {boolean} True if the date is in the interval.
+   */
+  isBetween (date, startDate, endDate) {
+    return this.#dayCounter.isBetween(date, new TimeInterval(startDate, endDate))
   }
 
   /**
