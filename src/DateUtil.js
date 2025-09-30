@@ -42,7 +42,18 @@ export default class DateUtil {
    * @returns {number} The week number.
    */
   getWeekNumber (date) {
-    return this.#weekCounter.getWeekNumber(date)
+    const dayOfTheYear = this.#dayCounter.getDayOfTheYear(date)
+    return this.#weekCounter.getWeekNumber(date, dayOfTheYear)
+  }
+
+  /**
+   * Get the day of the year from a date.
+   *
+   * @param {Date} date - The specified date.
+   * @returns {number} A number that represents the day of the year.
+   */
+  getOrdinalDate (date) {
+    return this.#dayCounter.getDayOfTheYear(date)
   }
 
   /**

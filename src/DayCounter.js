@@ -24,7 +24,16 @@ export default class DayCounter {
     const timeDifference = targetDate - dateNow
 
     const days = timeDifference / MILLISECONDS_PER_DAY
-    return days >= 0 ? Math.ceil(days) : Math.floor(days)
+
+    let dayCount = 0
+    if (days >= 0) {
+      // Round up if the date is in the future, to include part of a day.
+      dayCount = Math.ceil(days)
+    } else {
+      // Round down if the date is in the past. Only count whole days.
+      dayCount = Math.floor(days)
+    }
+    return dayCount
   }
 
   /**
@@ -36,6 +45,19 @@ export default class DayCounter {
   #getMidnightTimestamp (date) {
     const targetDate = new Date(date)
     return targetDate.setHours(0, 0, 0, 0)
+  }
+
+  /**
+   * Get the day of the year from a date.
+   *
+   * @param {Date} date - The specified date.
+   * @returns {number} A number that represents the day of the year.
+   */
+  getDayOfTheYear (date) {
+    // Use UTC to avoid daylight savings problems.
+    const startOfTheYear = Date.UTC(date.getFullYear(), 0, 0)
+    const targetDate = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
+    return (targetDate - startOfTheYear) / MILLISECONDS_PER_DAY
   }
 
   /**

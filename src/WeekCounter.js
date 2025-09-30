@@ -4,8 +4,6 @@
  * @version 1.0.0
  */
 
-const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24
-
 /**
  * Represents a WeekCounter.
  */
@@ -14,13 +12,13 @@ export default class WeekCounter {
    * Get the week number from a date.
    *
    * @param {Date} date - The specified date.
+   * @param {number} dayOfTheYear - The ordinal day number for the date.
    * @returns {number} The week number.
    */
-  getWeekNumber (date) {
+  getWeekNumber (date, dayOfTheYear) {
     /**
      * @see https://en.wikipedia.org/wiki/ISO_week_date#Calculating_the_week_number_from_an_ordinal_date
      */
-    const dayOfTheYear = this.#getDayOfTheYear(date)
     const dayOfTheWeek = this.#getDayOfTheWeek(date)
     const week = Math.trunc((10 + (dayOfTheYear - dayOfTheWeek)) / 7)
     let weekOfTheYear = week
@@ -31,22 +29,13 @@ export default class WeekCounter {
       weekOfTheYear = this.#getWeeksPerYear(date.getFullYear() - 1)
     } else if (week === 53) {
       // Check if it is in week 1 of the following year.
-      this.#endsOnWeek1(date.getFullYear()) ? weekOfTheYear = 1 : weekOfTheYear = week
+      if (this.#endsOnWeek1(date.getFullYear())) {
+        weekOfTheYear = 1
+      } else {
+        weekOfTheYear = week
+      }
     }
     return weekOfTheYear
-  }
-
-  /**
-   * Get the day of the year.
-   *
-   * @param {Date} date - The specified date.
-   * @returns {number} The day of the year.
-   */
-  #getDayOfTheYear (date) {
-    // Use UTC to avoid daylight savings problems.
-    const startOfTheYear = Date.UTC(date.getFullYear(), 0, 0)
-    const targetDate = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
-    return (targetDate - startOfTheYear) / MILLISECONDS_PER_DAY
   }
 
   /**
@@ -57,7 +46,11 @@ export default class WeekCounter {
    */
   #getDayOfTheWeek (date) {
     // getDay() returns 0 for Sunday, but Sunday has to be 7 for the formula to work.
-    return date.getDay() !== 0 ? date.getDay() : 7
+    let weekday = 7
+    if (date.getDay() !== 0) {
+      weekday = date.getDay()
+    }
+    return weekday
   }
 
   /**
@@ -84,7 +77,11 @@ export default class WeekCounter {
    * @returns {number} The number of weeks in the year.
    */
   #getWeeksPerYear (year) {
-    return this.#has53weeks(year) ? 53 : 52
+    let weeks = 52
+    if (this.#has53weeks(year)) {
+      weeks = 53
+    }
+    return weeks
   }
 
   /**
