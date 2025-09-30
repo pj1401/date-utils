@@ -4,8 +4,6 @@
  * @version 1.0.0
  */
 
-const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24
-
 /**
  * Represents a WeekCounter.
  */
@@ -14,13 +12,13 @@ export default class WeekCounter {
    * Get the week number from a date.
    *
    * @param {Date} date - The specified date.
+   * @param {number} dayOfTheYear - The ordinal day number for the date.
    * @returns {number} The week number.
    */
-  getWeekNumber (date) {
+  getWeekNumber (date, dayOfTheYear) {
     /**
      * @see https://en.wikipedia.org/wiki/ISO_week_date#Calculating_the_week_number_from_an_ordinal_date
      */
-    const dayOfTheYear = this.#getDayOfTheYear(date)
     const dayOfTheWeek = this.#getDayOfTheWeek(date)
     const week = Math.trunc((10 + (dayOfTheYear - dayOfTheWeek)) / 7)
     let weekOfTheYear = week
@@ -38,19 +36,6 @@ export default class WeekCounter {
       }
     }
     return weekOfTheYear
-  }
-
-  /**
-   * Get the day of the year.
-   *
-   * @param {Date} date - The specified date.
-   * @returns {number} The day of the year.
-   */
-  #getDayOfTheYear (date) {
-    // Use UTC to avoid daylight savings problems.
-    const startOfTheYear = Date.UTC(date.getFullYear(), 0, 0)
-    const targetDate = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
-    return (targetDate - startOfTheYear) / MILLISECONDS_PER_DAY
   }
 
   /**

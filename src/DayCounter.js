@@ -48,6 +48,19 @@ export default class DayCounter {
   }
 
   /**
+   * Get the day of the year from a date.
+   *
+   * @param {Date} date - The specified date.
+   * @returns {number} A number that represents the day of the year.
+   */
+  getDayOfTheYear (date) {
+    // Use UTC to avoid daylight savings problems.
+    const startOfTheYear = Date.UTC(date.getFullYear(), 0, 0)
+    const targetDate = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
+    return (targetDate - startOfTheYear) / MILLISECONDS_PER_DAY
+  }
+
+  /**
    * Get the difference between two dates.
    *
    * @param {Date} date1 - The first date.

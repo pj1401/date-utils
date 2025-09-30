@@ -42,7 +42,8 @@ export default class DateUtil {
    * @returns {number} The week number.
    */
   getWeekNumber (date) {
-    return this.#weekCounter.getWeekNumber(date)
+    const dayOfTheYear = this.#dayCounter.getDayOfTheYear(date)
+    return this.#weekCounter.getWeekNumber(date, dayOfTheYear)
   }
 
   /**
