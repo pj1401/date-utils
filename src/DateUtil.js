@@ -7,6 +7,7 @@
 import DayCounter from './DayCounter.js'
 import TimeInterval from './TimeInterval.js'
 import WeekCounter from './WeekCounter.js'
+import YearCounter from './YearCounter.js'
 
 /**
  * Collection of date utils.
@@ -14,16 +15,19 @@ import WeekCounter from './WeekCounter.js'
 export default class DateUtil {
   #dayCounter
   #weekCounter
+  #yearCounter
 
   /**
    * Initialises a new instance.
    *
    * @param {DayCounter} dayCounter - A day counter instantiated from a class with the same capabilities as DayCounter.
    * @param {WeekCounter} weekCounter - A week counter instantiated from a class with the same capabilities as WeekCounter.
+   * @param {YearCounter} yearCounter - A year counter instantiated from a class with the same capabilities as YearCounter.
    */
-  constructor (dayCounter = new DayCounter(), weekCounter = new WeekCounter()) {
+  constructor (dayCounter = new DayCounter(), weekCounter = new WeekCounter(), yearCounter = new YearCounter()) {
     this.#dayCounter = dayCounter
     this.#weekCounter = weekCounter
+    this.#yearCounter = yearCounter
   }
 
   /**
@@ -66,6 +70,16 @@ export default class DateUtil {
    */
   getDaysBetween (date1, date2) {
     return this.#dayCounter.getDaysBetween(date1, date2)
+  }
+
+  /**
+   * Get the quarter of the year the date is in.
+   *
+   * @param {Date} date - The specified date.
+   * @returns {number} A number representing the quarter of the year.
+   */
+  getQuarter (date) {
+    return this.#yearCounter.getYearQuarter(date)
   }
 
   /**
