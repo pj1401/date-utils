@@ -1,35 +1,48 @@
 /**
- * @file The WeekCounter class.
+ * @file The Week class.
  * @author Patricia Johansson
  * @version 1.0.0
  */
 
+import DayCounter from './DayCounter.js'
+
 /**
- * Represents a WeekCounter.
+ * Represents a Week.
  */
-export default class WeekCounter {
+export default class Week {
+  #date
+  #day
+
   /**
-   * Get the week number from a date.
+   * Initialises a new instance.
    *
-   * @param {Date} date - The specified date.
-   * @param {number} dayOfTheYear - The ordinal day number for the date.
+   * @param {Date} date - Any date that is in the week.
+   */
+  constructor (date) {
+    this.#date = new Date(date)
+    this.#day = new DayCounter(date)
+  }
+
+  /**
+   * Get the week number.
+   *
    * @returns {number} The week number.
    */
-  getWeekNumber (date, dayOfTheYear) {
+  getWeekNumber () {
     /**
      * @see https://en.wikipedia.org/wiki/ISO_week_date#Calculating_the_week_number_from_an_ordinal_date
      */
-    const dayOfTheWeek = this.#getDayOfTheWeek(date)
-    const week = Math.trunc((10 + (dayOfTheYear - dayOfTheWeek)) / 7)
+    const dayOfTheWeek = this.#getDayOfTheWeek(this.#date)
+    const week = Math.trunc((10 + (this.#day.getDayOfTheYear() - dayOfTheWeek)) / 7)
     let weekOfTheYear = week
 
     // Check if the calculated week is the last week or first week of the year.
     if (week < 1) {
       // Get the number of weeks from the preceding year.
-      weekOfTheYear = this.#getWeeksPerYear(date.getFullYear() - 1)
+      weekOfTheYear = this.#getWeeksPerYear(this.#date.getFullYear() - 1)
     } else if (week === 53) {
       // Check if it is in week 1 of the following year.
-      if (this.#endsOnWeek1(date.getFullYear())) {
+      if (this.#endsOnWeek1(this.#date.getFullYear())) {
         weekOfTheYear = 1
       } else {
         weekOfTheYear = week
@@ -142,30 +155,29 @@ export default class WeekCounter {
   /**
    * Get the start of the week (Monday).
    *
-   * @param {Date} date - The specified date.
    * @returns {Date} The start of the week.
    */
-  startOfWeek (date) {
-    const weekday = date.getDay()
-    const weekStart = new Date(date)
+  getStartOfWeek () {
+    const weekday = this.#date.getDay()
+    const weekStart = new Date(this.#date)
     switch (weekday) {
       case 0: // Sunday
-        weekStart.setDate(date.getDate() - 6)
+        weekStart.setDate(this.#date.getDate() - 6)
         break
       case 2: // Tuesday
-        weekStart.setDate(date.getDate() - 1)
+        weekStart.setDate(this.#date.getDate() - 1)
         break
       case 3:
-        weekStart.setDate(date.getDate() - 2)
+        weekStart.setDate(this.#date.getDate() - 2)
         break
       case 4:
-        weekStart.setDate(date.getDate() - 3)
+        weekStart.setDate(this.#date.getDate() - 3)
         break
       case 5:
-        weekStart.setDate(date.getDate() - 4)
+        weekStart.setDate(this.#date.getDate() - 4)
         break
       case 6: // Saturday
-        weekStart.setDate(date.getDate() - 5)
+        weekStart.setDate(this.#date.getDate() - 5)
         break
       default:
         break
@@ -177,30 +189,29 @@ export default class WeekCounter {
   /**
    * Get the end of the week (Sunday).
    *
-   * @param {Date} date - The specified date.
    * @returns {Date} The end of the week.
    */
-  endOfWeek (date) {
-    const weekday = date.getDay()
-    const weekEnd = new Date(date)
+  getEndOfWeek () {
+    const weekday = this.#date.getDay()
+    const weekEnd = new Date(this.#date)
     switch (weekday) {
       case 1: // Monday
-        weekEnd.setDate(date.getDate() + 6)
+        weekEnd.setDate(this.#date.getDate() + 6)
         break
       case 2: // Tuesday
-        weekEnd.setDate(date.getDate() + 5)
+        weekEnd.setDate(this.#date.getDate() + 5)
         break
       case 3:
-        weekEnd.setDate(date.getDate() + 4)
+        weekEnd.setDate(this.#date.getDate() + 4)
         break
       case 4:
-        weekEnd.setDate(date.getDate() + 3)
+        weekEnd.setDate(this.#date.getDate() + 3)
         break
       case 5:
-        weekEnd.setDate(date.getDate() + 2)
+        weekEnd.setDate(this.#date.getDate() + 2)
         break
       case 6: // Saturday
-        weekEnd.setDate(date.getDate() + 1)
+        weekEnd.setDate(this.#date.getDate() + 1)
         break
       default:
         break
