@@ -4,7 +4,7 @@
  * @version 1.0.0
  */
 
-import DayCounter from './DayCounter.js'
+import Day from './Day.js'
 
 /**
  * Represents a Week.
@@ -20,7 +20,7 @@ export default class Week {
    */
   constructor (date) {
     this.#date = new Date(date)
-    this.#day = new DayCounter(date)
+    this.#day = new Day(date)
   }
 
   /**
