@@ -6,6 +6,7 @@
  */
 
 import Day from '../../src/Day.js'
+import TimeInterval from '../../src/TimeInterval.js'
 
 /**
  * Represents a test runner for the Day class.
@@ -22,6 +23,34 @@ export default class DayTester {
   constructor (date) {
     this.day = new Day(date)
     this.date = new Date(date)
+  }
+
+  /**
+   * Run tests for the getDays method.
+   *
+   * @param {number} expected - The expected number of days passed, or left until the date.
+   */
+  runGetDaysTest (expected) {
+    expect(this.day.getDays()).toEqual(expected)
+  }
+
+  /**
+   * Run tests for the getDayOfYear method.
+   *
+   * @param {number} expected - The number representing the day of the year.
+   */
+  runGetDayOfYearTest (expected) {
+    expect(this.day.getDayOfYear()).toEqual(expected)
+  }
+
+  /**
+   * Run tests for the getDaysBetween method.
+   *
+   * @param {Date} date2 - The second date.
+   * @param {number} expected - The expected number of days between the days.
+   */
+  runGetDaysBetweenTest (date2, expected) {
+    expect(this.day.getDaysBetween(date2)).toEqual(expected)
   }
 
   /**
@@ -62,5 +91,25 @@ export default class DayTester {
     expect(this.day).toEqual(dayOriginal)
 
     expect(result).toEqual(expected)
+  }
+
+  /**
+   * Run tests for the isBetween method, where the result is expected to be true.
+   *
+   * @param {Date} startDate - The start date.
+   * @param {Date} endDate - The end date.
+   */
+  runIsBetweenTestTrue (startDate, endDate) {
+    expect(this.day.isBetween(new TimeInterval(startDate, endDate))).toBeTruthy()
+  }
+
+  /**
+   * Run tests for the isBetween method, where the result is expected to be false.
+   *
+   * @param {Date} startDate - The start date.
+   * @param {Date} endDate - The end date.
+   */
+  runIsBetweenTestFalse (startDate, endDate) {
+    expect(this.day.isBetween(new TimeInterval(startDate, endDate))).toBeFalsy()
   }
 }

@@ -61,22 +61,6 @@ describe('DateUtil', () => {
       const dateUtil = new DateUtil()
       expect(dateUtil.getDaysBetween(date1, date2)).toEqual(-7)
     })
-
-    test('Over one month between dates, returns 32', () => {
-      const date1 = new Date('2025-08-14')
-      const date2 = new Date('2025-09-15')
-
-      const dateUtil = new DateUtil()
-      expect(dateUtil.getDaysBetween(date1, date2)).toEqual(32)
-    })
-
-    test('Over one year between dates, returns 367', () => {
-      const date1 = new Date('2024-09-13')
-      const date2 = new Date('2025-09-15')
-
-      const dateUtil = new DateUtil()
-      expect(dateUtil.getDaysBetween(date1, date2)).toEqual(367)
-    })
   })
 
   describe('getQuarter', () => {
