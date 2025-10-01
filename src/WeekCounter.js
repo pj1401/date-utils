@@ -140,7 +140,7 @@ export default class WeekCounter {
   }
 
   /**
-   * Get the start of the week.
+   * Get the start of the week (Monday).
    *
    * @param {Date} date - The specified date.
    * @returns {Date} The start of the week.
@@ -175,7 +175,7 @@ export default class WeekCounter {
   }
 
   /**
-   * Get the end of the week.
+   * Get the end of the week (Sunday).
    *
    * @param {Date} date - The specified date.
    * @returns {Date} The end of the week.
