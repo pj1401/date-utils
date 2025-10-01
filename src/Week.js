@@ -33,7 +33,7 @@ export default class Week {
      * @see https://en.wikipedia.org/wiki/ISO_week_date#Calculating_the_week_number_from_an_ordinal_date
      */
     const dayOfTheWeek = this.#getDayOfTheWeek(this.#date)
-    const week = Math.trunc((10 + (this.#day.getDayOfTheYear() - dayOfTheWeek)) / 7)
+    const week = Math.trunc((10 + (this.#day.getDayOfYear() - dayOfTheWeek)) / 7)
     let weekOfTheYear = week
 
     // Check if the calculated week is the last week or first week of the year.
