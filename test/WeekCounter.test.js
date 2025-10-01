@@ -89,7 +89,54 @@ describe('WeekCounter', () => {
       const weekEnd = new Date('2026-01-04')
       weekEnd.setHours(0, 0, 0, 0)
       const weekCounter = new WeekCounter()
+      expect(weekCounter.endOfWeek(date)).toEqual(weekEnd)
+    })
 
+    test('27 February 2024, Tuesday, returns 2024-03-03', () => {
+      const date = new Date('2024-02-27')
+      const weekEnd = new Date('2024-03-03')
+      weekEnd.setHours(0, 0, 0, 0)
+      const weekCounter = new WeekCounter()
+      expect(weekCounter.endOfWeek(date)).toEqual(weekEnd)
+    })
+
+    test('22 October 2025, Wednesday, DST ends, returns 2025-10-26', () => {
+      const date = new Date('2025-10-22')
+      const weekEnd = new Date('2025-10-26')
+      weekEnd.setHours(0, 0, 0, 0)
+      const weekCounter = new WeekCounter()
+      expect(weekCounter.endOfWeek(date)).toEqual(weekEnd)
+    })
+
+    test('27 March 2025, Thursday, DST starts, returns 2025-03-30', () => {
+      const date = new Date('2025-03-27')
+      const weekEnd = new Date('2025-03-30')
+      weekEnd.setHours(0, 0, 0, 0)
+      const weekCounter = new WeekCounter()
+      expect(weekCounter.endOfWeek(date)).toEqual(weekEnd)
+    })
+
+    test('31 October 2025, Friday, returns 2025-11-02', () => {
+      const date = new Date('2025-10-31')
+      const weekEnd = new Date('2025-11-02')
+      weekEnd.setHours(0, 0, 0, 0)
+      const weekCounter = new WeekCounter()
+      expect(weekCounter.endOfWeek(date)).toEqual(weekEnd)
+    })
+
+    test('31 May 2025, Saturday, returns 2025-06-01', () => {
+      const date = new Date('2025-05-31')
+      const weekEnd = new Date('2025-06-01')
+      weekEnd.setHours(0, 0, 0, 0)
+      const weekCounter = new WeekCounter()
+      expect(weekCounter.endOfWeek(date)).toEqual(weekEnd)
+    })
+
+    test('31 August 2025, Sunday, returns 2025-08-31', () => {
+      const date = new Date('2025-08-31')
+      const weekEnd = new Date('2025-08-31')
+      weekEnd.setHours(0, 0, 0, 0)
+      const weekCounter = new WeekCounter()
       expect(weekCounter.endOfWeek(date)).toEqual(weekEnd)
     })
   })
