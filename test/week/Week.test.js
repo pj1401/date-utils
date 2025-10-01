@@ -1,6 +1,6 @@
 /**
  * @file Tests for the Week.js file.
- * @module test/Week.test.js
+ * @module test/week/Week.test.js
  * @author Patricia Johansson
  * @version 1.0.0
  */

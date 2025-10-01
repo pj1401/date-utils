@@ -4,7 +4,7 @@
  * @version 1.0.0
  */
 
-import DayCounter from './DayCounter.js'
+import Day from './Day.js'
 import TimeInterval from './TimeInterval.js'
 import Week from './Week.js'
 import YearCounter from './YearCounter.js'
@@ -13,17 +13,14 @@ import YearCounter from './YearCounter.js'
  * Collection of date utils.
  */
 export default class DateUtil {
-  #dayCounter
   #yearCounter
 
   /**
    * Initialises a new instance.
    *
-   * @param {DayCounter} dayCounter - A day counter instantiated from a class with the same capabilities as DayCounter.
    * @param {YearCounter} yearCounter - A year counter instantiated from a class with the same capabilities as YearCounter.
    */
-  constructor (dayCounter = new DayCounter(), yearCounter = new YearCounter()) {
-    this.#dayCounter = dayCounter
+  constructor (yearCounter = new YearCounter()) {
     this.#yearCounter = yearCounter
   }
 
@@ -34,7 +31,8 @@ export default class DateUtil {
    * @returns {number} The number of days.
    */
   countDays (date) {
-    return this.#dayCounter.getDays(date)
+    const day = new Day(date)
+    return day.getDays()
   }
 
   /**
@@ -55,7 +53,8 @@ export default class DateUtil {
    * @returns {number} A number that represents the day of the year.
    */
   getOrdinalDate (date) {
-    return this.#dayCounter.getDayOfTheYear(date)
+    const day = new Day(date)
+    return day.getDayOfYear(date)
   }
 
   /**
@@ -66,7 +65,8 @@ export default class DateUtil {
    * @returns {number} The number of days between the dates.
    */
   getDaysBetween (date1, date2) {
-    return this.#dayCounter.getDaysBetween(date1, date2)
+    const day = new Day(date1)
+    return day.getDaysBetween(date2)
   }
 
   /**
@@ -88,7 +88,8 @@ export default class DateUtil {
    * @returns {boolean} True if the date is in the interval.
    */
   isBetween (date, startDate, endDate) {
-    return this.#dayCounter.isBetween(date, new TimeInterval(startDate, endDate))
+    const day = new Day(date)
+    return day.isBetween(new TimeInterval(startDate, endDate))
   }
 
   /**
@@ -121,7 +122,8 @@ export default class DateUtil {
    * @returns {Date} The date with the added days.
    */
   addDays (date, numberOfDays) {
-    return this.#dayCounter.addDays(date, numberOfDays)
+    const day = new Day(date)
+    return day.getFutureDate(numberOfDays)
   }
 
   /**
@@ -132,6 +134,7 @@ export default class DateUtil {
    * @returns {Date} The date with the added days.
    */
   removeDays (date, numberOfDays) {
-    return this.#dayCounter.removeDays(date, numberOfDays)
+    const day = new Day(date)
+    return day.getPastDate(numberOfDays)
   }
 }
