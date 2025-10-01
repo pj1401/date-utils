@@ -140,7 +140,7 @@ export default class WeekCounter {
   }
 
   /**
-   * Get the start of the week.
+   * Get the start of the week (Monday).
    *
    * @param {Date} date - The specified date.
    * @returns {Date} The start of the week.
@@ -172,5 +172,40 @@ export default class WeekCounter {
     }
     weekStart.setHours(0, 0, 0, 0)
     return weekStart
+  }
+
+  /**
+   * Get the end of the week (Sunday).
+   *
+   * @param {Date} date - The specified date.
+   * @returns {Date} The end of the week.
+   */
+  endOfWeek (date) {
+    const weekday = date.getDay()
+    const weekEnd = new Date(date)
+    switch (weekday) {
+      case 1: // Monday
+        weekEnd.setDate(date.getDate() + 6)
+        break
+      case 2: // Tuesday
+        weekEnd.setDate(date.getDate() + 5)
+        break
+      case 3:
+        weekEnd.setDate(date.getDate() + 4)
+        break
+      case 4:
+        weekEnd.setDate(date.getDate() + 3)
+        break
+      case 5:
+        weekEnd.setDate(date.getDate() + 2)
+        break
+      case 6: // Saturday
+        weekEnd.setDate(date.getDate() + 1)
+        break
+      default:
+        break
+    }
+    weekEnd.setHours(0, 0, 0, 0)
+    return weekEnd
   }
 }
