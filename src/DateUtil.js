@@ -105,6 +105,16 @@ export default class DateUtil {
   }
 
   /**
+   * Get the end of the week.
+   *
+   * @param {Date} date - The specified date.
+   * @returns {Date} The end of the week.
+   */
+  endOfWeek (date) {
+    return this.#weekCounter.endOfWeek(date)
+  }
+
+  /**
    * Add days to the date.
    *
    * @param {Date} date - The specified date.
