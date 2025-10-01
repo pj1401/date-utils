@@ -6,7 +6,7 @@
 
 import DayCounter from './DayCounter.js'
 import TimeInterval from './TimeInterval.js'
-import WeekCounter from './WeekCounter.js'
+import Week from './Week.js'
 import YearCounter from './YearCounter.js'
 
 /**
@@ -14,19 +14,16 @@ import YearCounter from './YearCounter.js'
  */
 export default class DateUtil {
   #dayCounter
-  #weekCounter
   #yearCounter
 
   /**
    * Initialises a new instance.
    *
    * @param {DayCounter} dayCounter - A day counter instantiated from a class with the same capabilities as DayCounter.
-   * @param {WeekCounter} weekCounter - A week counter instantiated from a class with the same capabilities as WeekCounter.
    * @param {YearCounter} yearCounter - A year counter instantiated from a class with the same capabilities as YearCounter.
    */
-  constructor (dayCounter = new DayCounter(), weekCounter = new WeekCounter(), yearCounter = new YearCounter()) {
+  constructor (dayCounter = new DayCounter(), yearCounter = new YearCounter()) {
     this.#dayCounter = dayCounter
-    this.#weekCounter = weekCounter
     this.#yearCounter = yearCounter
   }
 
@@ -47,8 +44,8 @@ export default class DateUtil {
    * @returns {number} The week number.
    */
   getWeekNumber (date) {
-    const dayOfTheYear = this.#dayCounter.getDayOfTheYear(date)
-    return this.#weekCounter.getWeekNumber(date, dayOfTheYear)
+    const week = new Week(date)
+    return week.getWeekNumber()
   }
 
   /**
@@ -101,7 +98,8 @@ export default class DateUtil {
    * @returns {Date} The start of the week.
    */
   startOfWeek (date) {
-    return this.#weekCounter.startOfWeek(date)
+    const week = new Week(date)
+    return week.getStartOfWeek(date)
   }
 
   /**
@@ -111,7 +109,8 @@ export default class DateUtil {
    * @returns {Date} The end of the week.
    */
   endOfWeek (date) {
-    return this.#weekCounter.endOfWeek(date)
+    const week = new Week(date)
+    return week.getEndOfWeek(date)
   }
 
   /**
