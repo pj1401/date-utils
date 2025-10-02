@@ -46,4 +46,64 @@ describe('Year', () => {
       })
     })
   })
+
+  describe('has53weeks', () => {
+    describe('true', () => {
+      test('2020', () => {
+        const yearTester = new YearTester(new Date('2020-01'))
+        yearTester.runHas53weeksTestTrue()
+      })
+    })
+
+    describe('false', () => {
+      test('2023', () => {
+        const yearTester = new YearTester(new Date('2023-01'))
+        yearTester.runHas53weeksTestFalse()
+      })
+      test('2025', () => {
+        const yearTester = new YearTester(new Date('2025-01'))
+        yearTester.runHas53weeksTestFalse()
+      })
+    })
+  })
+
+  describe('endsOnWeek1', () => {
+    describe('true', () => {
+      test('2025', () => {
+        const yearTester = new YearTester(new Date('2025-01'))
+        yearTester.runEndsOnWeek1TestTrue()
+      })
+    })
+
+    describe('false', () => {
+      test('2020', () => {
+        const yearTester = new YearTester(new Date('2020-01'))
+        yearTester.runEndsOnWeek1TestFalse()
+      })
+      test('2023', () => {
+        const yearTester = new YearTester(new Date('2023-01'))
+        yearTester.runEndsOnWeek1TestFalse()
+      })
+    })
+  })
+
+  describe('getWeeksPerYear', () => {
+    describe('returns 52', () => {
+      test('2023', () => {
+        const yearTester = new YearTester(new Date('2023-01'))
+        yearTester.runGetWeeksPerYearTest(52)
+      })
+      test('2025', () => {
+        const yearTester = new YearTester(new Date('2025-01'))
+        yearTester.runGetWeeksPerYearTest(52)
+      })
+    })
+
+    describe('returns 53', () => {
+      test('2020', () => {
+        const yearTester = new YearTester(new Date('2020-01'))
+        yearTester.runGetWeeksPerYearTest(53)
+      })
+    })
+  })
 })

@@ -35,4 +35,41 @@ export default class YearTester {
   runIsLeapYearTestFalse () {
     expect(this.year.isLeapYear()).toBeFalsy()
   }
+
+  /**
+   * Run tests for the has53weeks method, where the result is expected to be true.
+   */
+  runHas53weeksTestTrue () {
+    expect(this.year.has53weeks()).toBeTruthy()
+  }
+
+  /**
+   * Run tests for the has53weeks method, where the result is expected to be false.
+   */
+  runHas53weeksTestFalse () {
+    expect(this.year.has53weeks()).toBeFalsy()
+  }
+
+  /**
+   * Run tests for the endsOnWeek1 method, where the result is expected to be true.
+   */
+  runEndsOnWeek1TestTrue () {
+    expect(this.year.endsOnWeek1()).toBeTruthy()
+  }
+
+  /**
+   * Run tests for the endsOnWeek1 method, where the result is expected to be false.
+   */
+  runEndsOnWeek1TestFalse () {
+    expect(this.year.endsOnWeek1()).toBeFalsy()
+  }
+
+  /**
+   * Run tests for the getWeeksPerYear method.
+   *
+   * @param {number} expected - The expected number of weeks.
+   */
+  runGetWeeksPerYearTest (expected) {
+    expect(this.year.getWeeksPerYear()).toEqual(expected)
+  }
 }
