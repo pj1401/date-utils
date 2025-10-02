@@ -5,25 +5,14 @@
  */
 
 import Day from './Day.js'
+import Month from './Month.js'
 import TimeInterval from './TimeInterval.js'
 import Week from './Week.js'
-import YearCounter from './YearCounter.js'
 
 /**
  * Collection of date utils.
  */
 export default class DateUtil {
-  #yearCounter
-
-  /**
-   * Initialises a new instance.
-   *
-   * @param {YearCounter} yearCounter - A year counter instantiated from a class with the same capabilities as YearCounter.
-   */
-  constructor (yearCounter = new YearCounter()) {
-    this.#yearCounter = yearCounter
-  }
-
   /**
    * Count days passed or days until the specified date.
    *
@@ -76,7 +65,8 @@ export default class DateUtil {
    * @returns {number} A number representing the quarter of the year.
    */
   getQuarter (date) {
-    return this.#yearCounter.getYearQuarter(date)
+    const month = new Month(date)
+    return month.getYearQuarter()
   }
 
   /**
