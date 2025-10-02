@@ -12,4 +12,5 @@
 
 | Metodnamn | Länk eller kod | Antal rader | Reflektion |
 | --------- | -------------- | ----------- | ---------- |
-| getWeekNumber | [Länk](src/Week.js#L31) | 15 |  |
+| getWeekNumber | [Länk](src/Week.js#L31) | 15 | **Small:** Det går att bryta ut några mindre funktioner ur metoden. **One Level of Abstraction per Function:** Kanske den nestade if-satsen kan vara en `getLastWeek` funktion eller liknande. **Do One Thing:** Det krävs många steg för att räkna ut veckonumret. Kanske veckonumret bör räknas ut när `Week` objektet skapas? Då behöver `getWeekNumber` bara hämta veckonumret. |
+| getDays | [Länk](src/Day.js#L31) | 13 | **Use Descriptive Names:** Metoden räknar ut dagar som passerat eller dagar som är kvar till ett visst datum. |
