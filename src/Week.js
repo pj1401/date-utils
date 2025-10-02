@@ -5,6 +5,7 @@
  */
 
 import Day from './Day.js'
+import Year from './Year.js'
 
 /**
  * Represents a Week.
@@ -39,10 +40,12 @@ export default class Week {
     // Check if the calculated week is the last week or first week of the year.
     if (week < 1) {
       // Get the number of weeks from the preceding year.
-      weekOfTheYear = this.#getWeeksPerYear(this.#date.getFullYear() - 1)
+      const precedingYear = new Year(new Date(`${this.#date.getFullYear() - 1}-01`))
+      weekOfTheYear = precedingYear.getWeeksPerYear()
     } else if (week === 53) {
       // Check if it is in week 1 of the following year.
-      if (this.#endsOnWeek1(this.#date.getFullYear())) {
+      const year = new Year(this.#date)
+      if (year.endsOnWeek1()) {
         weekOfTheYear = 1
       } else {
         weekOfTheYear = week
@@ -64,92 +67,6 @@ export default class Week {
       weekday = date.getDay()
     }
     return weekday
-  }
-
-  /**
-   * Returns true if 31 December is in week 1 of the following year.
-   *
-   * @param {number} year  - A number representing the year.
-   * @returns {boolean} True if 31 December is in week 1 of the following year.
-   */
-  #endsOnWeek1 (year) {
-    const lastDay = new Date(`${year}-12-31`)
-    const weekDay = this.#getWeekdayString(lastDay)
-
-    /**
-     * @see https://en.wikipedia.org/wiki/ISO_week_date#Last_week
-     * If 31 December is on a Monday, Tuesday, or Wednesday it is in W01 of the next year.
-     */
-    return weekDay === 'Monday' || weekDay === 'Tuesday' || weekDay === 'Wednesday'
-  }
-
-  /**
-   * Get the number of weeks in a year.
-   *
-   * @param {number} year - The year.
-   * @returns {number} The number of weeks in the year.
-   */
-  #getWeeksPerYear (year) {
-    let weeks = 52
-    if (this.#has53weeks(year)) {
-      weeks = 53
-    }
-    return weeks
-  }
-
-  /**
-   * Returns true if the year has 53 weeks.
-   *
-   * @param {number} year - A number representing the year.
-   * @returns {boolean} True if the year has 53 weeks.
-   */
-  #has53weeks (year) {
-    /**
-     * @see https://en.wikipedia.org/wiki/ISO_week_date#Weeks_per_year
-     */
-    const firstDay = new Date(`${year}-01-01`)
-    const lastDay = new Date(`${year}-12-31`)
-
-    const firstDayIsThursday = this.#getWeekdayString(firstDay) === 'Thursday'
-    const firstDayIsWednesday = this.#getWeekdayString(firstDay) === 'Wednesday'
-    const lastDayIsThursday = this.#getWeekdayString(lastDay) === 'Thursday'
-    const lastDayIsFriday = this.#getWeekdayString(lastDay) === 'Friday'
-
-    return firstDayIsThursday || (firstDayIsWednesday && this.#isLeapYear(year)) ||
-    lastDayIsThursday || (lastDayIsFriday && this.#isLeapYear(year))
-  }
-
-  /**
-   * Get the day of the week as a readable string.
-   *
-   * @param {Date} date - The specified date.
-   * @returns {string} The day of the week.
-   */
-  #getWeekdayString (date) {
-    const weekdayStringMap = {
-      0: 'Sunday',
-      1: 'Monday',
-      2: 'Tuesday',
-      3: 'Wednesday',
-      4: 'Thursday',
-      5: 'Friday',
-      6: 'Saturday'
-    }
-    return weekdayStringMap[date.getDay()]
-  }
-
-  /**
-   * Returns true if the year is a leap year.
-   *
-   * @param {number} year - The year.
-   * @returns {boolean} True if the year is a leap year.
-   */
-  #isLeapYear (year) {
-    /**
-     * @see https://en.wikipedia.org/wiki/Leap_year
-     * each year that is a multiple of 4, except for years evenly divisible by 100 but not by 400
-     */
-    return ((year % 4) === 0 && (year % 100) !== 0) || ((year % 400) === 0)
   }
 
   /**
