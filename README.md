@@ -82,3 +82,19 @@ Returns the end (Sunday) of the week the date is in.
 ```javaScript
 dateUtil.endOfWeek(new Date('2025-09-30')) // returns a Date object set to 2025-10-05
 ```
+
+### addDays(date: Date, numberOfDays: number): Date
+
+Add days to the date. The returned date is a different instance from the date argument.
+
+```javaScript
+dateUtil.addDays(new Date('2025-01-30'), 5) // returns a Date object set to 2025-02-04
+```
+
+### removeDays(date: Date, numberOfDays: number): Date
+
+Remove days from the date. The returned date is a different instance from the date argument.
+
+```javaScript
+dateUtil.addDays(new Date('2025-01-03'), 10) // returns a Date object set to 2024-12-24
+```
