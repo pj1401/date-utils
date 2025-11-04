@@ -6,6 +6,7 @@
 | ---- | ---------- | ------------------------------------- |
 | countDays | Metodnamn på en metod som räknar dagar som passerat sedan ett datum. Om datumet är i framtiden räknar den dagar som är kvar. | **Use Intention-Revealing Names:** countDays beskriver vad metoden gör, men det kanske blir tydligare om det var två separata metoder som heter `getDaysUntil` och `getDaysSince`. **Method Names:** Utan `get` som preposition är det inte självklart att metoden returnerar något. |
 | getDaysBetween | Metoden räknar hur många dagar som är mellan två datum. | **Method Names:** `get` används som preposition så det är tydligt att något returneras. |
+| date1, date2 | Namn på argumenten i `getDaysBetween`. | **Make Meaningful Distinctions:** Att sätta siffror i slutet av namnen hjälper inte att beskriva vad de är till för. `startDate` och `endDate` är mer beskrivande namn. Men `date2` måste inte vara senare än `date1` för att metoden ska fungera. (Om `date2` är tidigare än `date1` returneras ett negativt nummer.) Med `startDate` och `endDate` låter det som att det första datum argumentet måste vara tidigare, men så är inte fallet. En lösning är att ändra till `startDate` och `endDate` och uppdatera `jsdoc` beskrivningen för att tydliggöra att `endDate` kan vara ett tidigare datum än `startDate`. |
 | getOrdinalDate | Metoden returnerar ett nummer för dagen på året. | **Use Problem Domain Names:** Det är inte säkert att den som ska använda modulen vet vad `OrdinalDate` är. `getDayOfYear` är kanske lättare att förstå. |
 
 ## Kapitel 3 Funktioner
