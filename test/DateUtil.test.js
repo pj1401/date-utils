@@ -145,6 +145,12 @@ describe('DateUtil', () => {
       const dateUtil = new DateUtil()
       expect(dateUtil.getDaysUntilWeekend(date).toEqual(0))
     })
+
+    test('Sunday returns 6', () => {
+      const date = new Date('2025-10-26')
+      const dateUtil = new DateUtil()
+      expect(dateUtil.getDaysUntilWeekend(date).toEqual(6))
+    })
   })
 
   describe('addDays', () => {
