@@ -117,4 +117,15 @@ export default class Day {
     targetDate.setDate(targetDate.getDate() - numberOfDays)
     return targetDate
   }
+
+  /**
+   * Get the number of days until the weekend.
+   *
+   * @returns {number} The number of days.
+   */
+  getDaysUntilWeekend () {
+    const saturday = 6
+    const weekday = this.#date.getDay()
+    return saturday - weekday
+  }
 }

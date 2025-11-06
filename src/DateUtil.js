@@ -105,7 +105,7 @@ export default class DateUtil {
   }
 
   /**
-   * Get the number of days until the weekend (Saturday).
+   * Get the number of days until the weekend (Saturday). If the date argument is a Sunday, it counts the days until the next weekend.
    *
    * @param {Date} date - The specified date.
    * @returns {number} The number of days until the weekend.
