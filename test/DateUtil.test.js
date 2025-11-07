@@ -133,6 +133,26 @@ describe('DateUtil', () => {
     })
   })
 
+  describe('getDaysUntilWeekend', () => {
+    test('Get the number of days until the weekend, 2025-11-05 returns 3', () => {
+      const date = new Date('2025-11-05')
+      const dateUtil = new DateUtil()
+      expect(dateUtil.getDaysUntilWeekend(date)).toEqual(3)
+    })
+
+    test('Saturday returns 0', () => {
+      const date = new Date('2025-11-08')
+      const dateUtil = new DateUtil()
+      expect(dateUtil.getDaysUntilWeekend(date)).toEqual(0)
+    })
+
+    test('Sunday returns 6', () => {
+      const date = new Date('2025-10-26')
+      const dateUtil = new DateUtil()
+      expect(dateUtil.getDaysUntilWeekend(date)).toEqual(6)
+    })
+  })
+
   describe('addDays', () => {
     test('Add days to a date', () => {
       const date = new Date('2025-01-30')

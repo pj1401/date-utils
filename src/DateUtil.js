@@ -105,6 +105,17 @@ export default class DateUtil {
   }
 
   /**
+   * Get the number of days until the weekend (Saturday). If the date argument is a Sunday, it counts the days until the next weekend.
+   *
+   * @param {Date} date - The specified date.
+   * @returns {number} The number of days until the weekend.
+   */
+  getDaysUntilWeekend (date = Date.now()) {
+    const day = new Day(date)
+    return day.getDaysUntilWeekend()
+  }
+
+  /**
    * Add days to the date.
    *
    * @param {Date} date - The specified date.
