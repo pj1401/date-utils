@@ -86,18 +86,22 @@ describe('DateUtil', () => {
       const startDate = new Date('2025-10-25')
       const endDate = new Date('2025-11-02')
       const expectedResult = [
-        new Date('2025-10-25'),
-        new Date('2025-10-26'),
-        new Date('2025-10-27'),
-        new Date('2025-10-28'),
-        new Date('2025-10-29'),
-        new Date('2025-10-30'),
-        new Date('2025-10-31'),
-        new Date('2025-11-01'),
-        new Date('2025-11-02')]
+        new Date(2025, 9, 25),
+        new Date(2025, 9, 26),
+        new Date(2025, 9, 27),
+        new Date(2025, 9, 28),
+        new Date(2025, 9, 29),
+        new Date(2025, 9, 30),
+        new Date(2025, 9, 31),
+        new Date(2025, 10, 1),
+        new Date(2025, 10, 2)
+      ]
 
       const dateUtil = new DateUtil()
       const result = dateUtil.getDatesBetween(startDate, endDate)
+      for (const date of result) {
+        expect(date.getHours()).toEqual(0)
+      }
       expect(result).toHaveLength(9)
       expect(result).toEqual(expectedResult)
     })
