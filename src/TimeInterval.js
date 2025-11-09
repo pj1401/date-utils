@@ -31,6 +31,8 @@ export default class TimeInterval {
     const dates = []
     const currentDate = new Date(this.startDate)
     const finalDate = new Date(this.endDate)
+    currentDate.setUTCHours(0, 0, 0, 0)
+    finalDate.setUTCHours(0, 0, 0, 0)
 
     if (currentDate > finalDate) {
       throw new RangeError('The start date must be earlier than the end date.')
@@ -38,7 +40,7 @@ export default class TimeInterval {
 
     while (currentDate <= finalDate) {
       dates.push(new Date(currentDate))
-      currentDate.setDate(currentDate.getDate() + 1)
+      currentDate.setUTCDate(currentDate.getUTCDate() + 1)
     }
 
     return dates
