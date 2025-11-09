@@ -59,6 +59,18 @@ export default class DateUtil {
   }
 
   /**
+   * Get an array of dates between two dates, inclusive.
+   *
+   * @param {Date} startDate - The starting date.
+   * @param {Date} endDate - The end date.
+   * @returns {Date[]} An array of Date objects.
+   */
+  getDatesBetween (startDate, endDate) {
+    const timeInterval = new TimeInterval(startDate, endDate)
+    return timeInterval.getDatesBetween()
+  }
+
+  /**
    * Get the quarter of the year the date is in.
    *
    * @param {Date} date - The specified date.
