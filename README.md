@@ -51,6 +51,14 @@ Returns the number of days between two dates.
 dateUtil.getDaysBetween(new Date('2025-09-15'), new Date('2025-09-22')) // returns 7
 ```
 
+### getDatesBetween(startDate: Date, endDate: Date): Date[]
+
+Get an array of dates between two dates, inclusive.
+
+```javaScript
+dateUtil.getDatesBetween(new Date('2025-10-25'), new Date('2025-11-02'))
+```
+
 ### getQuarter(date: Date): number
 
 Returns the quarter of the year the date is in.
@@ -83,6 +91,22 @@ Returns the end (Sunday) of the week the date is in.
 dateUtil.endOfWeek(new Date('2025-09-30')) // returns a Date object set to 2025-10-05
 ```
 
+### getDaysUntilWeekend(date: Date): number
+
+Get the number of days until the weekend (Saturday). If the date argument is a Sunday, it counts the days until the next weekend. If no argument is passed the current date will be used.
+
+```javaScript
+dateUtil.getDaysUntilWeekend(new Date('2025-11-05')) // returns 3
+```
+
+### countWorkingDays(startDate: Date, endDate: Date): number
+
+Get the number of working days between two dates.
+
+```javaScript
+dateUtil.countWorkingDays(new Date('2025-10-20'), new Date('2025-11-01')) // returns 10
+```
+
 ### addDays(date: Date, numberOfDays: number): Date
 
 Add days to the date. The returned date is a different instance from the date argument.
@@ -98,3 +122,7 @@ Remove days from the date. The returned date is a different instance from the da
 ```javaScript
 dateUtil.addDays(new Date('2025-01-03'), 10) // returns a Date object set to 2024-12-24
 ```
+
+## Testing
+
+See [Testing instructions](./testrapport.md)
