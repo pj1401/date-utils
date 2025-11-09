@@ -63,29 +63,43 @@ describe('DateUtil', () => {
     })
   })
 
-  describe('getQuarter', () => {
-    test('29 February 2024, returns 1', () => {
-      const date = new Date('2024-02-29')
+  describe('getDaysBetween', () => {
+    test('Get number of days between two dates', () => {
+      const date1 = new Date('2025-09-15')
+      const date2 = new Date('2025-09-22')
+
       const dateUtil = new DateUtil()
-      expect(dateUtil.getQuarter(date)).toEqual(1)
+      expect(dateUtil.getDaysBetween(date1, date2)).toEqual(7)
     })
 
-    test('1 April 2025, returns 2', () => {
-      const date = new Date('2025-04-01')
-      const dateUtil = new DateUtil()
-      expect(dateUtil.getQuarter(date)).toEqual(2)
-    })
+    test('Get negative days if the date2 is earlier than date1', () => {
+      const date1 = new Date('2025-09-15')
+      const date2 = new Date('2025-09-08')
 
-    test('1 July 2025, returns 3', () => {
-      const date = new Date('2025-07-01')
       const dateUtil = new DateUtil()
-      expect(dateUtil.getQuarter(date)).toEqual(3)
+      expect(dateUtil.getDaysBetween(date1, date2)).toEqual(-7)
     })
+  })
 
-    test('1 October 2025, returns 4', () => {
-      const date = new Date('2025-10-01')
+  describe('getDatesBetween', () => {
+    test('Returns all dates between 2025-10-25 and 2025-11-02, inclusive', () => {
+      const startDate = new Date('2025-10-25')
+      const endDate = new Date('2025-11-02')
+      const expectedResult = [
+        new Date('2025-10-25'),
+        new Date('2025-10-26'),
+        new Date('2025-10-27'),
+        new Date('2025-10-28'),
+        new Date('2025-10-29'),
+        new Date('2025-10-30'),
+        new Date('2025-10-31'),
+        new Date('2025-11-01'),
+        new Date('2025-11-02')]
+
       const dateUtil = new DateUtil()
-      expect(dateUtil.getQuarter(date)).toEqual(4)
+      const result = dateUtil.getDatesBetween(startDate, endDate)
+      expect(result).toHaveLength(9)
+      expect(result).toEqual(expectedResult)
     })
   })
 
