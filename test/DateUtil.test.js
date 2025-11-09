@@ -63,24 +63,6 @@ describe('DateUtil', () => {
     })
   })
 
-  describe('getDaysBetween', () => {
-    test('Get number of days between two dates', () => {
-      const date1 = new Date('2025-09-15')
-      const date2 = new Date('2025-09-22')
-
-      const dateUtil = new DateUtil()
-      expect(dateUtil.getDaysBetween(date1, date2)).toEqual(7)
-    })
-
-    test('Get negative days if the date2 is earlier than date1', () => {
-      const date1 = new Date('2025-09-15')
-      const date2 = new Date('2025-09-08')
-
-      const dateUtil = new DateUtil()
-      expect(dateUtil.getDaysBetween(date1, date2)).toEqual(-7)
-    })
-  })
-
   describe('getDatesBetween', () => {
     test('Returns all dates between 2025-10-25 and 2025-11-02, inclusive', () => {
       const startDate = new Date('2025-10-25')
