@@ -171,6 +171,15 @@ describe('DateUtil', () => {
     })
   })
 
+  describe('countWorkingDays', () => {
+    test('Count working days between 2025-10-20 and 2025-11-01, returns 10', () => {
+      const startDate = new Date('2025-10-20')
+      const endDate = new Date('2025-11-01')
+      const dateUtil = new DateUtil()
+      expect(dateUtil.countWorkingDays(startDate, endDate)).toEqual(10)
+    })
+  })
+
   describe('addDays', () => {
     test('Add days to a date', () => {
       const date = new Date('2025-01-30')

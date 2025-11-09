@@ -53,4 +53,23 @@ export default class TimeInterval {
 
     return dates
   }
+
+  /**
+   * Get the number of working days in the interval.
+   *
+   * @returns {number} The number of working days.
+   */
+  getNumberOfWorkingDays () {
+    const dates = this.getDatesBetween()
+    const sunday = 0
+    const saturday = 6
+    let count = 0
+    for (const date of dates) {
+      const day = date.getDay()
+      if (day !== saturday && day !== sunday) {
+        count++
+      }
+    }
+    return count
+  }
 }
