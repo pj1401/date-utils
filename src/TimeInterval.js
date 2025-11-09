@@ -38,9 +38,13 @@ export default class TimeInterval {
       throw new RangeError('The start date must be earlier than the end date.')
     }
 
-    while (currentDate <= finalDate) {
+    // Use a re-assignable variable for the while loop. Linter complains otherwise.
+    let currentTimestamp = currentDate.getTime()
+
+    while (currentTimestamp <= finalDate) {
       dates.push(new Date(currentDate))
       currentDate.setUTCDate(currentDate.getUTCDate() + 1)
+      currentTimestamp = currentDate.getTime()
     }
 
     return dates
