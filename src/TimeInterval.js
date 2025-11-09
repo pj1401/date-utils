@@ -42,7 +42,11 @@ export default class TimeInterval {
     let currentTimestamp = currentDate.getTime()
 
     while (currentTimestamp <= finalDate) {
-      dates.push(new Date(currentDate))
+      const year = currentDate.getUTCFullYear()
+      const month = currentDate.getUTCMonth()
+      const day = currentDate.getUTCDate()
+      dates.push(new Date(year, month, day))
+
       currentDate.setUTCDate(currentDate.getUTCDate() + 1)
       currentTimestamp = currentDate.getTime()
     }
