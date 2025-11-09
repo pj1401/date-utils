@@ -128,6 +128,18 @@ export default class DateUtil {
   }
 
   /**
+   * Get the number of working days between two dates.
+   *
+   * @param {Date} startDate - The starting date.
+   * @param {Date} endDate - The end date.
+   * @returns {number} The number of working days.
+   */
+  countWorkingDays (startDate, endDate) {
+    const timeInterval = new TimeInterval(startDate, endDate)
+    return timeInterval.getNumberOfWorkingDays()
+  }
+
+  /**
    * Add days to the date.
    *
    * @param {Date} date - The specified date.

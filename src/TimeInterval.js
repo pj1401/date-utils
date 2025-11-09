@@ -53,4 +53,13 @@ export default class TimeInterval {
 
     return dates
   }
+
+  /**
+   * Get the number of working days in the interval.
+   *
+   * @returns {number} The number of working days.
+   */
+  getNumberOfWorkingDays () {
+    return -1
+  }
 }
