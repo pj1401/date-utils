@@ -29,7 +29,9 @@ Om jag hade valt namn på `getDaysBetween` hade jag ändrat det till `countDaysB
 | getDatesBetween | [Länk](../src/TimeInterval.js#L30) | 18 | **Do One Thing:** Jag kunde ha använt en separat metod för att kopiera och sätta `Date` objekten till midnatt. Tex. har jag [getMidnightTimestamp](../src/Day.js#L57) i `Day` klassen. |
 | has53weeks | [Länk](../src/Year.js#L61) | 8 | **Small:** Det är möjligt att skriva hela jämförelsen på en rad, men jag sparade strängjämförelserna i variabler för att det skulle bli mer läsbart. Jag kan skriva hjälpfunktioner för onsdag, torsdag, och fredag, men jag får fundera mer på det för att det inte ska bli för många funktioner som upprepar samma sak. |
 
-
+Jag håller med författaren om att det tar några försök att skriva om funktionerna för att de ska uppfylla clean code principerna.
+Något jag kan bli bättre på är att skriva kod på hög abstraktionsnivå först, för att funktionen ska vara på **One Level of Abstraction** från början.
+Då blir koden bra uppdelad och det blir lättare att skriva hjälper funktionerna sedan.
 
 ## Kodkvalitet
 
