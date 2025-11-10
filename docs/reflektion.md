@@ -10,8 +10,14 @@
 | getOrdinalDate | Metoden returnerar ett nummer för dagen på året. | **Use Problem Domain Names:** Det är inte säkert att den som ska använda modulen vet vad `OrdinalDate` är. `getDayOfYear` är kanske lättare att förstå. |
 | `case 0: // Sunday` | Magiskt nummer i en switch. [Länk till kodrad](../src/Week.js#L81) | **Use Intention-Revealing Names:** Istället för att använda variabel namn har jag använt kommentarer för att visa vad som menas med `0`. Det hade varit bättre med variabler tex. `const sunday = 0` eller att mappa nummer till veckodagsnamnen. |
 
-Jag är fortfarande lite osäker på hur jag ska välja bra namn. Till exempel har jag `getDaysBetween`, som från början hette `getTimeBetween`. Jag ändrade `Time` till `Days` för att det skulle vara tydligt att det var antalet dagar som returnerades. Men senare lade jag till `getDatesBetween` som returnerar en `array` med `Date` objekt. Nu är det lätt att blanda ihop `getDaysBetween` och `getDatesBetween`. Namnen är liknande och någon kan tro att `getDaysBetween` också returnerar en array med datum.
-Om jag hade valt namn på `getDaysBetween` hade jag ändrat det till `countDaysBetween`, men om jag hade följt **Pick One Word per Concept** hade jag kanske ändrat den till `getNumberOfDaysBetween`, eftersom nästan alla metoder som returnerar något har använt `get` som preposition. Å andra sidan kan jag använda `count` som preposition till alla funktioner som räknar ut något och bara returnerar ett nummer.
+Jag är fortfarande lite osäker på hur jag ska välja bra namn.
+Till exempel har jag `getDaysBetween`, som från början hette `getTimeBetween`.
+Jag ändrade `Time` till `Days` för att det skulle vara tydligt att det var antalet dagar som returnerades.
+Men senare lade jag till `getDatesBetween` som returnerar en `array` med `Date` objekt.
+Nu är det lätt att blanda ihop `getDaysBetween` och `getDatesBetween`.
+Namnen är liknande och någon kan tro att `getDaysBetween` också returnerar en array med datum.  
+Om jag hade valt namn på `getDaysBetween` hade jag ändrat det till `countDaysBetween`, men om jag hade följt **Pick One Word per Concept** hade jag kanske ändrat den till `getNumberOfDaysBetween`, eftersom nästan alla metoder som returnerar något har använt `get` som preposition.
+Å andra sidan kan jag dela upp funktionernas koncept till de som räknar ut något och bara returnerar ett nummer, de får `count` som preposition, och de som returnerar annat får ha `get`.
 
 ## Kapitel 3 Funktioner
 
@@ -21,12 +27,21 @@ Om jag hade valt namn på `getDaysBetween` hade jag ändrat det till `countDaysB
 | getDays | [Länk](../src/Day.js#L31) | 13 | **Use Descriptive Names:** Metoden räknar ut dagar som passerat eller dagar som är kvar till ett visst datum. Mer beskrivande namn hade varit `getDaysSince` och `getDaysUntil`. Beräkningen av dagar behövs bara flyttas till en privat metod. |
 | getStartOfWeek / getEndOfWeek | [Länk](../src/Week.js#L77) | 27 | **Don’t Repeat Yourself:** Funktionerna är nästan likadana, de har bara olika nummer. Det ska gå att slå ihop till en funktion, men har inte hunnit komma på en bra lösning för det. |
 | getDatesBetween | [Länk](../src/TimeInterval.js#L30) | 18 | **Do One Thing:** Jag kunde ha använt en separat metod för att kopiera och sätta `Date` objekten till midnatt. Tex. har jag [getMidnightTimestamp](../src/Day.js#L57) i `Day` klassen. |
-| has53weeks | [Länk](../src/Year.js#L61) | 8 | **Small:** Det är möjligt att skriva hela jämförelsen på en rad, men jag sparade strängjämförelserna i variabler för att det skulle bli mer läsbart. Jag kan skriva hjälpfunktioner för onsdag, torsdag, och fredag, men jag får fundera mer på det så att det inte blir många funktioner som upprepar samma sak. |
+| has53weeks | [Länk](../src/Year.js#L61) | 8 | **Small:** Det är möjligt att skriva hela jämförelsen på en rad, men jag sparade strängjämförelserna i variabler för att det skulle bli mer läsbart. Jag kan skriva hjälpfunktioner för onsdag, torsdag, och fredag, men jag får fundera mer på det för att det inte ska bli för många funktioner som upprepar samma sak. |
+
+
 
 ## Kodkvalitet
 
-Något jag märkt att jag använder så kallade `Magic Numbers` mycket. Jag visste sedan tidigare att det är bra att undvika att använda magic numbers, men det finns vissa välkända nummer som jag inte tycker ska bytas ut, till exempel 7 för antalet dagar i en vecka, eller 52 och 53 för max veckorna i ett år.
+Något jag märkt att jag använder `Magic Numbers` mycket.
+Jag visste sedan tidigare att det är bra att undvika att använda magic numbers, men det finns vissa välkända nummer som jag inte tycker ska bytas ut, till exempel 7 för antalet dagar i en vecka, eller 52 och 53 för max veckorna i ett år.
 
-Däremot finns det situationer där jag borde ha bytt ut nummer till variabler. Veckodagsnummer behövs i många av beräkningarna och när de används ser de ut som `Magic Numbers`, för det är bara 0 till 6 som representerar dagarna, och det är inte lätt att veta det bara från att läsa koden. Jag försökte lösa detta på olika sätt, till exempel en [metod som mappar numren till strängar](../src/Year.js#L83), eller att använda [variabler med veckodagsnamn](../src/TimeInterval.js#L64), och i `getStartOfWeek` och `getEndOfWeek` använde jag bara kommentarer bredvid numren. Den bästa lösningen hade nog varit att återanvända `getWeekdayString`, som mappade numren till strängar, så att koden blir mer sammanhängande och följer **Don’t Repeat Yourself**.
+Däremot finns det situationer där jag borde ha bytt ut nummer till variabler.
+Veckodagsnummer behövs i många av beräkningarna och när de används ser de ut som `Magic Numbers`, för det är bara 0 till 6 som representerar dagarna, och det är inte lätt att veta det bara från att läsa koden.
+Jag försökte lösa detta på olika sätt, till exempel en [metod som mappar numren till strängar](../src/Year.js#L83), eller att använda [variabler med veckodagsnamn](../src/TimeInterval.js#L64), och i `getStartOfWeek` och `getEndOfWeek` använde jag bara kommentarer bredvid numren.
+Den bästa lösningen hade nog varit att återanvända `getWeekdayString`, som mappade numren till strängar, för att koden ska bli mer sammanhängande och följa **Don’t Repeat Yourself**.
 
-Jag tycker att kodkvaliteten är något som förbättras desto längre tid jag lägger på koden. Funktionerna som jag skrev tidigt har genomgått flera förändringar än de som jag lade till senast. Detta betyder inte att jag är nöjd med alla de äldsta metoderna. [getWeekNumber()](../src/Week.js#L32) var en av de första metoderna jag lade till och den kan fortfarande förbättras så att den följer **Do One Thing** och **One Level of Abstraction per Function**.
+Jag tycker att kodkvaliteten är något som förbättras desto längre tid jag lägger på koden.
+Funktionerna som jag skrev tidigt har genomgått flera förändringar än de som jag lade till senast.
+Detta betyder inte att jag är nöjd med alla de äldsta metoderna.
+[getWeekNumber()](../src/Week.js#L32) var en av de första metoderna jag lade till och den kan fortfarande förbättras så att den följer **Do One Thing** och **One Level of Abstraction per Function**.
