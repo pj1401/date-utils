@@ -12,9 +12,31 @@ import DateUtil from './modules/date-utils/index.js' // Use the location of the 
 const dateUtil = new DateUtil()
 ```
 
+## Table of contents
+
+ - [Usage](#usage)
+ - [Table of contents](#table-of-contents)
+ - [Methods](#methods)
+   - [countDays](#countdays)
+   - [getWeekNumber](#getweeknumber)
+   - [getOrdinalDate](#getordinaldate)
+   - [getDaysBetween](#getdaysbetween)
+   - [getDatesBetween](#getdatesbetween)
+   - [getQuarter](#getquarter)
+   - [isBetween](#isbetween)
+   - [startOfWeek](#startofweek)
+   - [endOfWeek](#endofweek)
+   - [getDaysUntilWeekend](#getdaysuntilweekend)
+   - [countWorkingDays](#countworkingdays)
+   - [addDays](#adddays)
+   - [removeDays](#removedays)
+ - [Testing](#testing)
+
 ## Methods
 
-### countDays(date: Date): number
+### countDays
+
+**countDays(date: Date): number**
 
 Returns the number of days until a date. If the date is in the past, the number of days passed is returned (negative).
 
@@ -27,7 +49,9 @@ dateUtil.countDays(nextWeek) // returns 7
 dateUtil.countDays(new Date('2025-09-30')) // returns a negative number
 ```
 
-### getWeekNumber(date: Date): number
+### getWeekNumber
+
+**getWeekNumber(date: Date): number**
 
 Returns the number of the week that the date is in.
 
@@ -35,7 +59,9 @@ Returns the number of the week that the date is in.
 dateUtil.getWeekNumber(new Date('2025-09-17')) // returns 38
 ```
 
-### getOrdinalDate(date: Date): number
+### getOrdinalDate
+
+**getOrdinalDate(date: Date): number**
 
 Returns the number representing the day of the year.
 
@@ -43,7 +69,9 @@ Returns the number representing the day of the year.
 dateUtil.getOrdinalDate(new Date('2025-09-30')) // returns 273
 ```
 
-### getDaysBetween(date1: Date, date2: Date): number
+### getDaysBetween
+
+**getDaysBetween(date1: Date, date2: Date): number**
 
 Returns the number of days between two dates.
 
@@ -51,7 +79,9 @@ Returns the number of days between two dates.
 dateUtil.getDaysBetween(new Date('2025-09-15'), new Date('2025-09-22')) // returns 7
 ```
 
-### getDatesBetween(startDate: Date, endDate: Date): Date[]
+### getDatesBetween
+
+**getDatesBetween(startDate: Date, endDate: Date): Date[]**
 
 Get an array of dates between two dates, inclusive.
 
@@ -59,7 +89,9 @@ Get an array of dates between two dates, inclusive.
 dateUtil.getDatesBetween(new Date('2025-10-25'), new Date('2025-11-02'))
 ```
 
-### getQuarter(date: Date): number
+### getQuarter
+
+**getQuarter(date: Date): number**
 
 Returns the quarter of the year the date is in.
 
@@ -67,7 +99,9 @@ Returns the quarter of the year the date is in.
 dateUtil.getQuarter(new Date('2025-10-01')) // returns 4
 ```
 
-### isBetween(date: Date, startDate: Date, endDate: Date): boolean
+### isBetween
+
+**isBetween(date: Date, startDate: Date, endDate: Date): boolean**
 
 Check if a date is in the interval `[startDate, endDate]`.
 
@@ -75,7 +109,9 @@ Check if a date is in the interval `[startDate, endDate]`.
 dateUtil.isBetween(new Date('2025-09-30'), new Date('2025-09-29'), new Date('2025-10-01')) // true
 ```
 
-### startOfWeek(date: Date): Date
+### startOfWeek
+
+**startOfWeek(date: Date): Date**
 
 Returns the start (Monday) of the week the date is in.
 
@@ -83,7 +119,9 @@ Returns the start (Monday) of the week the date is in.
 dateUtil.startOfWeek(new Date('2025-09-30')) // returns a Date object set to 2025-09-29
 ```
 
-### endOfWeek(date: Date): Date
+### endOfWeek
+
+**endOfWeek(date: Date): Date**
 
 Returns the end (Sunday) of the week the date is in.
 
@@ -91,7 +129,9 @@ Returns the end (Sunday) of the week the date is in.
 dateUtil.endOfWeek(new Date('2025-09-30')) // returns a Date object set to 2025-10-05
 ```
 
-### getDaysUntilWeekend(date: Date): number
+### getDaysUntilWeekend
+
+**getDaysUntilWeekend(date: Date): number**
 
 Get the number of days until the weekend (Saturday). If the date argument is a Sunday, it counts the days until the next weekend. If no argument is passed the current date will be used.
 
@@ -99,7 +139,9 @@ Get the number of days until the weekend (Saturday). If the date argument is a S
 dateUtil.getDaysUntilWeekend(new Date('2025-11-05')) // returns 3
 ```
 
-### countWorkingDays(startDate: Date, endDate: Date): number
+### countWorkingDays
+
+**countWorkingDays(startDate: Date, endDate: Date): number**
 
 Get the number of working days between two dates.
 
@@ -107,7 +149,9 @@ Get the number of working days between two dates.
 dateUtil.countWorkingDays(new Date('2025-10-20'), new Date('2025-11-01')) // returns 10
 ```
 
-### addDays(date: Date, numberOfDays: number): Date
+### addDays
+
+**addDays(date: Date, numberOfDays: number): Date**
 
 Add days to the date. The returned date is a different instance from the date argument.
 
@@ -115,7 +159,9 @@ Add days to the date. The returned date is a different instance from the date ar
 dateUtil.addDays(new Date('2025-01-30'), 5) // returns a Date object set to 2025-02-04
 ```
 
-### removeDays(date: Date, numberOfDays: number): Date
+### removeDays
+
+**removeDays(date: Date, numberOfDays: number): Date**
 
 Remove days from the date. The returned date is a different instance from the date argument.
 
