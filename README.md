@@ -7,7 +7,7 @@ This is a collection of utility methods for the `Date` object.
 Import:
 
 ```javaScript
-import DateUtil from 'date-utils'
+import DateUtil from './modules/date-utils/index.js' // Use the location of the module in your project.
 
 const dateUtil = new DateUtil()
 ```
