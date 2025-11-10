@@ -125,4 +125,4 @@ dateUtil.addDays(new Date('2025-01-03'), 10) // returns a Date object set to 202
 
 ## Testing
 
-See [Testing instructions](./testrapport.md)
+See [Testing instructions](./docs/testrapport.md#run-tests)
