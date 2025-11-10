@@ -19,3 +19,10 @@
 | getStartOfWeek / getEndOfWeek | [Länk](../src/Week.js#L77) | 27 | **Don’t Repeat Yourself:** Funktionerna är nästan likadana, de har bara olika nummer. Det ska gå att slå ihop till en funktion, men har inte hunnit komma på en bra lösning för det. |
 | getDatesBetween | [Länk](../src/TimeInterval.js#L30) | 18 | **Do One Thing:** Jag kunde ha använt en separat metod för att kopiera och sätta `Date` objekten till midnatt. Tex. har jag [getMidnightTimestamp](../src/Day.js#L57) i `Day` klassen. |
 | has53weeks | [Länk](../src/Year.js#L61) | 8 | **Small:** Det är möjligt att skriva hela jämförelsen på en rad, men jag sparade strängjämförelserna i variabler för att det skulle bli mer läsbart. Jag kan skriva hjälpfunktioner för onsdag, torsdag, och fredag, men jag får fundera mer på det så att det inte blir många funktioner som upprepar samma sak. |
+
+## Kodkvalitet
+
+Något jag märkt att jag använder så kallade `Magic Numbers` flitigt. Jag visste sedan tidigare att det är bra att undvika att använda magic numbers, men det finns vissa välkända nummer som jag inte tycker ska bytas ut, till exempel 7 för antalet dagar i en vecka, eller 52 och 53 för max veckorna i ett år. Däremot finns det getDay() metoden för Date objektet som returnerar ett nummer som representerar veckodagen. Veckodagsnumren behövs i många av beräkningarna och när de används ser de ut som Magic Numbers. Jag försökte lösa detta på olika sätt, till exempel en metod som mappar numren till strängar, eller att använda variabler med veckodagsnamn.
+
+Jag tycker att kodkvaliteten är något som förbättras desto längre tid jag lägger på koden. Funktionerna som jag skrev tidigt har genomgått flera förändringar än de som jag lade till senast. Detta betyder inte att jag är nöjd med alla de äldsta metoderna. `getWeekNumber()` var en av de första metoderna jag lade till och den kan fortfarande förbättras genom att använda fler hjälper-funktioner.
+
