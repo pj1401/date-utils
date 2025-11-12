@@ -4,10 +4,19 @@ This is a collection of utility methods for the `Date` object.
 
 ## Usage
 
-Import:
+**Download:**
+
+ 1. Click **Code** at the top of the page.
+
+ ![GitHub Code button](./docs/github-code-download.png)
+
+ 2. Click **Download ZIP**
+ 3. The module can now be extracted from the zip file into your project.
+
+**Import:**
 
 ```javaScript
-import DateUtil from './modules/date-utils/index.js' // Use the location of the module in your project.
+import { DateUtil } from './modules/date-utils/index.js' // Use the location of the module in your project.
 
 const dateUtil = new DateUtil()
 ```
