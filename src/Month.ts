@@ -13,14 +13,14 @@ export default class Month {
    *
    * @type {number}
    */
-  #month
+  #month: number
 
   /**
    * Initialises a new instance.
    *
    * @param {Date} date - Any date that is in the month.
    */
-  constructor (date) {
+  constructor (date: Date) {
     this.#month = date.getMonth()
   }
 
@@ -29,7 +29,7 @@ export default class Month {
    *
    * @returns {number} A number representing the quarter of the year.
    */
-  getYearQuarter () {
+  getYearQuarter (): number {
     let quarter = 4
     if (this.#month < 3) {
       quarter = 1
