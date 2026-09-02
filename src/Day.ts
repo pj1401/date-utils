@@ -17,9 +17,9 @@ export default class Day {
   /**
    * Initialises a new instance.
    *
-   * @param {Date} date - A date object that represents the day.
+   * @param {Date | number} date - The specified date or a timestamp that represents the date.
    */
-  constructor (date: Date) {
+  constructor (date: Date | number) {
     this.#date = new Date(date)
   }
 
