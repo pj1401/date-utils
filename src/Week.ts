@@ -19,7 +19,7 @@ export default class Week {
    *
    * @param {Date} date - Any date that is in the week.
    */
-  constructor (date) {
+  constructor (date: Date) {
     this.#date = new Date(date)
     this.#day = new Day(date)
   }
@@ -29,7 +29,7 @@ export default class Week {
    *
    * @returns {number} The week number.
    */
-  getWeekNumber () {
+  getWeekNumber (): number {
     /**
      * @see https://en.wikipedia.org/wiki/ISO_week_date#Calculating_the_week_number_from_an_ordinal_date
      */
@@ -60,7 +60,7 @@ export default class Week {
    * @param {Date} date - The specified date.
    * @returns {number} A number that represents the day of the week. 1 represents Monday, 7 for Sunday.
    */
-  #getDayOfTheWeek (date) {
+  #getDayOfTheWeek (date: Date): number {
     // getDay() returns 0 for Sunday, but Sunday has to be 7 for the formula to work.
     let weekday = 7
     if (date.getDay() !== 0) {
@@ -74,7 +74,7 @@ export default class Week {
    *
    * @returns {Date} The start of the week.
    */
-  getStartOfWeek () {
+  getStartOfWeek (): Date {
     const weekday = this.#date.getDay()
     const weekStart = new Date(this.#date)
     switch (weekday) {
@@ -108,7 +108,7 @@ export default class Week {
    *
    * @returns {Date} The end of the week.
    */
-  getEndOfWeek () {
+  getEndOfWeek (): Date {
     const weekday = this.#date.getDay()
     const weekEnd = new Date(this.#date)
     switch (weekday) {
