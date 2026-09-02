@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es2022",
-    "module": "es2022",
-    "moduleResolution": "node",
+    "target": "es6",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "lib": ["ESNext", "DOM"],
     "strict": true,
     "sourceMap": true,
