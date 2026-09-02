@@ -6,20 +6,20 @@
 
 import TimeInterval from './TimeInterval.js'
 
-const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24
+const MILLISECONDS_PER_DAY: number = 1000 * 60 * 60 * 24
 
 /**
  * Represents a Day.
  */
 export default class Day {
-  #date
+  #date: Date
 
   /**
    * Initialises a new instance.
    *
    * @param {Date} date - A date object that represents the day.
    */
-  constructor (date) {
+  constructor (date: Date) {
     this.#date = new Date(date)
   }
 
@@ -28,7 +28,7 @@ export default class Day {
    *
    * @returns {number} The number of days.
    */
-  getDays () {
+  getDays (): number {
     const dateNow = this.#getMidnightTimestamp(Date.now())
     const targetDate = this.#getMidnightTimestamp(this.#date)
 
@@ -51,10 +51,10 @@ export default class Day {
   /**
    * Get the timestamp for midnight of the specified date.
    *
-   * @param {Date} date - The specified date.
-   * @returns {Date} The date with the time set to midnight.
+   * @param {Date | number} date - The specified date or a timestamp that represents the date.
+   * @returns {number} The date timestamp with the time set to midnight.
    */
-  #getMidnightTimestamp (date) {
+  #getMidnightTimestamp (date: Date | number): number {
     const targetDate = new Date(date)
     return targetDate.setHours(0, 0, 0, 0)
   }
@@ -64,7 +64,7 @@ export default class Day {
    *
    * @returns {number} A number that represents the day of the year.
    */
-  getDayOfYear () {
+  getDayOfYear (): number {
     // Use UTC to avoid daylight savings problems.
     const startOfYear = Date.UTC(this.#date.getFullYear(), 0, 0)
     const targetDate = Date.UTC(this.#date.getFullYear(), this.#date.getMonth(), this.#date.getDate())
@@ -77,7 +77,7 @@ export default class Day {
    * @param {Date} date2 - The second date.
    * @returns {number} The number of days between the dates.
    */
-  getDaysBetween (date2) {
+  getDaysBetween (date2: Date): number {
     // Use UTC to avoid daylight savings problems.
     const date1UTC = Date.UTC(this.#date.getFullYear(), this.#date.getMonth(), this.#date.getDate())
     const date2UTC = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate())
@@ -90,7 +90,7 @@ export default class Day {
    * @param {TimeInterval} interval - The time interval.
    * @returns {boolean} True if the date is in the interval.
    */
-  isBetween (interval) {
+  isBetween (interval: TimeInterval): boolean {
     return this.#date >= interval.startDate && this.#date <= interval.endDate
   }
 
@@ -100,7 +100,7 @@ export default class Day {
    * @param {number} numberOfDays - The number of days to add.
    * @returns {Date} The date with the added days.
    */
-  getFutureDate (numberOfDays) {
+  getFutureDate (numberOfDays: number): Date {
     const targetDate = new Date(this.#date)
     targetDate.setDate(targetDate.getDate() + numberOfDays)
     return targetDate
@@ -112,7 +112,7 @@ export default class Day {
    * @param {number} numberOfDays - The number of days to remove.
    * @returns {Date} The date with the added days.
    */
-  getPastDate (numberOfDays) {
+  getPastDate (numberOfDays: number): Date {
     const targetDate = new Date(this.#date)
     targetDate.setDate(targetDate.getDate() - numberOfDays)
     return targetDate
@@ -123,7 +123,7 @@ export default class Day {
    *
    * @returns {number} The number of days.
    */
-  getDaysUntilWeekend () {
+  getDaysUntilWeekend (): number {
     const saturday = 6
     const weekday = this.#date.getDay()
     return saturday - weekday
