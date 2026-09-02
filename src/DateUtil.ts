@@ -19,7 +19,7 @@ export default class DateUtil {
    * @param {Date} date - The specified date.
    * @returns {number} The number of days.
    */
-  countDays (date) {
+  countDays (date: Date): number {
     const day = new Day(date)
     return day.getDays()
   }
@@ -30,7 +30,7 @@ export default class DateUtil {
    * @param {Date} date - The specified date.
    * @returns {number} The week number.
    */
-  getWeekNumber (date) {
+  getWeekNumber (date: Date): number {
     const week = new Week(date)
     return week.getWeekNumber()
   }
@@ -41,9 +41,9 @@ export default class DateUtil {
    * @param {Date} date - The specified date.
    * @returns {number} A number that represents the day of the year.
    */
-  getOrdinalDate (date) {
+  getOrdinalDate (date: Date): number {
     const day = new Day(date)
-    return day.getDayOfYear(date)
+    return day.getDayOfYear()
   }
 
   /**
@@ -53,7 +53,7 @@ export default class DateUtil {
    * @param {Date} date2 - The second date.
    * @returns {number} The number of days between the dates.
    */
-  getDaysBetween (date1, date2) {
+  getDaysBetween (date1: Date, date2: Date): number {
     const day = new Day(date1)
     return day.getDaysBetween(date2)
   }
@@ -65,7 +65,7 @@ export default class DateUtil {
    * @param {Date} endDate - The end date.
    * @returns {Date[]} An array of Date objects.
    */
-  getDatesBetween (startDate, endDate) {
+  getDatesBetween (startDate: Date, endDate: Date): Date[] {
     const timeInterval = new TimeInterval(startDate, endDate)
     return timeInterval.getDatesBetween()
   }
@@ -76,7 +76,7 @@ export default class DateUtil {
    * @param {Date} date - The specified date.
    * @returns {number} A number representing the quarter of the year.
    */
-  getQuarter (date) {
+  getQuarter (date: Date): number {
     const month = new Month(date)
     return month.getYearQuarter()
   }
@@ -89,7 +89,7 @@ export default class DateUtil {
    * @param {Date} endDate - The end date.
    * @returns {boolean} True if the date is in the interval.
    */
-  isBetween (date, startDate, endDate) {
+  isBetween (date: Date, startDate: Date, endDate: Date): boolean {
     const day = new Day(date)
     return day.isBetween(new TimeInterval(startDate, endDate))
   }
@@ -100,9 +100,9 @@ export default class DateUtil {
    * @param {Date} date - The specified date.
    * @returns {Date} The start of the week.
    */
-  startOfWeek (date) {
+  startOfWeek (date: Date): Date {
     const week = new Week(date)
-    return week.getStartOfWeek(date)
+    return week.getStartOfWeek()
   }
 
   /**
@@ -111,18 +111,18 @@ export default class DateUtil {
    * @param {Date} date - The specified date.
    * @returns {Date} The end of the week.
    */
-  endOfWeek (date) {
+  endOfWeek (date: Date): Date {
     const week = new Week(date)
-    return week.getEndOfWeek(date)
+    return week.getEndOfWeek()
   }
 
   /**
    * Get the number of days until the weekend (Saturday). If the date argument is a Sunday, it counts the days until the next weekend.
    *
-   * @param {Date} date - The specified date.
+   * @param {Date | number} date - The specified date or a timestamp that represents the date.
    * @returns {number} The number of days until the weekend.
    */
-  getDaysUntilWeekend (date = Date.now()) {
+  getDaysUntilWeekend (date: Date | number = Date.now()): number {
     const day = new Day(date)
     return day.getDaysUntilWeekend()
   }
@@ -134,7 +134,7 @@ export default class DateUtil {
    * @param {Date} endDate - The end date.
    * @returns {number} The number of working days.
    */
-  countWorkingDays (startDate, endDate) {
+  countWorkingDays (startDate: Date, endDate: Date): number {
     const timeInterval = new TimeInterval(startDate, endDate)
     return timeInterval.getNumberOfWorkingDays()
   }
@@ -146,7 +146,7 @@ export default class DateUtil {
    * @param {number} numberOfDays - The number of days to add.
    * @returns {Date} The date with the added days.
    */
-  addDays (date, numberOfDays) {
+  addDays (date: Date, numberOfDays: number): Date {
     const day = new Day(date)
     return day.getFutureDate(numberOfDays)
   }
@@ -158,7 +158,7 @@ export default class DateUtil {
    * @param {number} numberOfDays - The number of days to remove.
    * @returns {Date} The date with the added days.
    */
-  removeDays (date, numberOfDays) {
+  removeDays (date: Date, numberOfDays: number): Date {
     const day = new Day(date)
     return day.getPastDate(numberOfDays)
   }

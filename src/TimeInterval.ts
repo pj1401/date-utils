@@ -8,8 +8,8 @@
  * Represents an interval of time.
  */
 export default class TimeInterval {
-  startDate
-  endDate
+  startDate: Date
+  endDate: Date
 
   /**
    * Initialises a new instance.
@@ -17,7 +17,7 @@ export default class TimeInterval {
    * @param {Date} startDate - The start date.
    * @param {Date} endDate - The end date.
    */
-  constructor (startDate, endDate) {
+  constructor (startDate: Date, endDate: Date) {
     this.startDate = startDate
     this.endDate = endDate
   }
@@ -27,7 +27,7 @@ export default class TimeInterval {
    *
    * @returns {Date[]} An array of Date objects.
    */
-  getDatesBetween () {
+  getDatesBetween (): Date[] {
     const dates = []
     const currentDate = new Date(this.startDate)
     const finalDate = new Date(this.endDate)
@@ -40,8 +40,9 @@ export default class TimeInterval {
 
     // Use a re-assignable variable for the while loop. Linter complains otherwise.
     let currentTimestamp = currentDate.getTime()
+    const finalDateTimestamp = finalDate.getTime()
 
-    while (currentTimestamp <= finalDate) {
+    while (currentTimestamp <= finalDateTimestamp) {
       const year = currentDate.getUTCFullYear()
       const month = currentDate.getUTCMonth()
       const day = currentDate.getUTCDate()
@@ -59,7 +60,7 @@ export default class TimeInterval {
    *
    * @returns {number} The number of working days.
    */
-  getNumberOfWorkingDays () {
+  getNumberOfWorkingDays (): number {
     const dates = this.getDatesBetween()
     const sunday = 0
     const saturday = 6

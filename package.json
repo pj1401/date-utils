@@ -27,6 +27,8 @@
   "private": true,
   "devDependencies": {
     "@lnu/eslint-config": "^1.1.10",
-    "jest": "^30.1.3"
+    "jest": "^30.1.3",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
   }
 }

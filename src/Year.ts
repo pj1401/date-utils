@@ -13,14 +13,14 @@ export default class Year {
    *
    * @type {number}
    */
-  #year
+  #year: number
 
   /**
    * Initialises a new instance.
    *
    * @param {Date} date - Any date that is in the year.
    */
-  constructor (date) {
+  constructor (date: Date) {
     this.#year = date.getFullYear()
   }
 
@@ -29,7 +29,7 @@ export default class Year {
    *
    * @returns {boolean} True if the year is a leap year.
    */
-  isLeapYear () {
+  isLeapYear (): boolean {
     /**
      * @see https://en.wikipedia.org/wiki/Leap_year
      * each year that is a multiple of 4, except for years evenly divisible by 100 but not by 400
@@ -42,7 +42,7 @@ export default class Year {
    *
    * @returns {boolean} True if 31 December is in week 1 of the following year.
    */
-  endsOnWeek1 () {
+  endsOnWeek1 (): boolean {
     const lastDay = new Date(`${this.#year}-12-31`)
     const weekDay = this.#getWeekdayString(lastDay)
 
@@ -58,7 +58,7 @@ export default class Year {
    *
    * @returns {boolean} True if the year has 53 weeks.
    */
-  has53weeks () {
+  has53weeks (): boolean {
     /**
      * @see https://en.wikipedia.org/wiki/ISO_week_date#Weeks_per_year
      */
@@ -80,8 +80,11 @@ export default class Year {
    * @param {Date} date - The specified date.
    * @returns {string} The day of the week.
    */
-  #getWeekdayString (date) {
-    const weekdayStringMap = {
+  #getWeekdayString (date: Date): string {
+    interface WeekDayMap {
+      [index: number]: string;
+    }
+    const weekdayStringMap: WeekDayMap = {
       0: 'Sunday',
       1: 'Monday',
       2: 'Tuesday',
@@ -98,7 +101,7 @@ export default class Year {
    *
    * @returns {number} The number of weeks in the year.
    */
-  getWeeksPerYear () {
+  getWeeksPerYear (): number {
     let weeks = 52
     if (this.has53weeks()) {
       weeks = 53
