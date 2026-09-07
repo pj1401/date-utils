@@ -5,6 +5,7 @@
  * @version 1.0.0
  */
 
+import { expect } from '@jest/globals'
 import Day from '../../src/Day.js'
 import TimeInterval from '../../src/TimeInterval.js'
 
@@ -12,15 +13,15 @@ import TimeInterval from '../../src/TimeInterval.js'
  * Represents a test runner for the Day class.
  */
 export default class DayTester {
-  day
-  date
+  day: Day
+  date: Date
 
   /**
    * Initialises a new instance.
    *
    * @param {Date} date - A date object that represents the day.
    */
-  constructor (date) {
+  constructor (date: Date) {
     this.day = new Day(date)
     this.date = new Date(date)
   }
@@ -30,7 +31,7 @@ export default class DayTester {
    *
    * @param {number} expected - The expected number of days passed, or left until the date.
    */
-  runGetDaysTest (expected) {
+  runGetDaysTest (expected: number) {
     expect(this.day.getDays()).toEqual(expected)
   }
 
@@ -39,7 +40,7 @@ export default class DayTester {
    *
    * @param {number} expected - The number representing the day of the year.
    */
-  runGetDayOfYearTest (expected) {
+  runGetDayOfYearTest (expected: number) {
     expect(this.day.getDayOfYear()).toEqual(expected)
   }
 
@@ -49,7 +50,7 @@ export default class DayTester {
    * @param {Date} date2 - The second date.
    * @param {number} expected - The expected number of days between the days.
    */
-  runGetDaysBetweenTest (date2, expected) {
+  runGetDaysBetweenTest (date2: Date, expected: number) {
     expect(this.day.getDaysBetween(date2)).toEqual(expected)
   }
 
@@ -59,7 +60,7 @@ export default class DayTester {
    * @param {number} numberOfDays - The number of days to add.
    * @param {Date} expected - The expected returned date.
    */
-  runFutureDateTest (numberOfDays, expected) {
+  runFutureDateTest (numberOfDays: number, expected: Date) {
     const dayOriginal = new Day(this.date)
     const result = this.day.getFutureDate(numberOfDays)
 
@@ -79,7 +80,7 @@ export default class DayTester {
    * @param {number} numberOfDays - The number of days to remove.
    * @param {Date} expected - The expected returned date.
    */
-  runPastDateTest (numberOfDays, expected) {
+  runPastDateTest (numberOfDays: number, expected: Date) {
     const dayOriginal = new Day(this.date)
     const result = this.day.getPastDate(numberOfDays)
 
@@ -99,7 +100,7 @@ export default class DayTester {
    * @param {Date} startDate - The start date.
    * @param {Date} endDate - The end date.
    */
-  runIsBetweenTestTrue (startDate, endDate) {
+  runIsBetweenTestTrue (startDate: Date, endDate: Date) {
     expect(this.day.isBetween(new TimeInterval(startDate, endDate))).toBeTruthy()
   }
 
@@ -109,7 +110,7 @@ export default class DayTester {
    * @param {Date} startDate - The start date.
    * @param {Date} endDate - The end date.
    */
-  runIsBetweenTestFalse (startDate, endDate) {
+  runIsBetweenTestFalse (startDate: Date, endDate: Date) {
     expect(this.day.isBetween(new TimeInterval(startDate, endDate))).toBeFalsy()
   }
 }
