@@ -5,20 +5,21 @@
  * @version 1.0.0
  */
 
+import { expect } from '@jest/globals'
 import Week from '../../src/Week.js'
 
 /**
  * Represents a Week test runner.
  */
 export default class WeekTester {
-  week
+  week: Week
 
   /**
    * Initialises a new instance.
    *
    * @param {Date} date - Any date that is in the week.
    */
-  constructor (date) {
+  constructor (date: Date) {
     this.week = new Week(date)
   }
 
@@ -27,7 +28,7 @@ export default class WeekTester {
    *
    * @param {Date} expected - The expected returned date (Monday).
    */
-  runStartOfWeekTest (expected) {
+  runStartOfWeekTest (expected: Date) {
     const weekStart = new Date(expected)
     weekStart.setHours(0, 0, 0, 0)
     expect(this.week.getStartOfWeek()).toEqual(weekStart)
@@ -38,7 +39,7 @@ export default class WeekTester {
    *
    * @param {Date} expected - The expected returned date (Sunday).
    */
-  runEndOfWeekTest (expected) {
+  runEndOfWeekTest (expected: Date) {
     const weekEnd = new Date(expected)
     weekEnd.setHours(0, 0, 0, 0)
     expect(this.week.getEndOfWeek()).toEqual(weekEnd)
@@ -49,7 +50,7 @@ export default class WeekTester {
    *
    * @param {number} expected - The expected returned week number.
    */
-  runWeekNumberTest (expected) {
+  runWeekNumberTest (expected: number) {
     expect(this.week.getWeekNumber()).toEqual(expected)
   }
 }

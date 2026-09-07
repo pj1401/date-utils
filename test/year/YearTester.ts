@@ -5,6 +5,7 @@
  * @version 1.0.0
  */
 
+import { expect } from '@jest/globals'
 import Year from '../../src/Year.js'
 
 /**
@@ -18,7 +19,7 @@ export default class YearTester {
    *
    * @param {Date} date - Any date that is in the year.
    */
-  constructor (date) {
+  constructor (date: Date) {
     this.year = new Year(date)
   }
 
@@ -69,7 +70,7 @@ export default class YearTester {
    *
    * @param {number} expected - The expected number of weeks.
    */
-  runGetWeeksPerYearTest (expected) {
+  runGetWeeksPerYearTest (expected: number) {
     expect(this.year.getWeeksPerYear()).toEqual(expected)
   }
 }

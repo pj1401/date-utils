@@ -14,5 +14,6 @@
     "noImplicitReturns": true,
     "jsx": "preserve",
     "noFallthroughCasesInSwitch": true,
+    "isolatedModules": true
   }
 }
