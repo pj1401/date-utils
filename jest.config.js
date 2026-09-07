@@ -8,10 +8,16 @@ export default {
   ...presetConfig,
   testEnvironment: 'node',
   transform: {
-    ...tsJestTransformCfg
+    ...tsJestTransformCfg,
+    '^.+\\.ts?$': [
+      'ts-jest',
+      {
+        useESM: true
+      }
+    ]
   },
+  extensionsToTreatAsEsm: ['.ts'],
   moduleNameMapper: {
     '(.+)\\.js': '$1'
-  },
-  extensionsToTreatAsEsm: ['.ts']
+  }
 }
