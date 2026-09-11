@@ -70,8 +70,8 @@ export default class Year {
     const lastDayIsThursday = this.#getWeekdayString(lastDay) === 'Thursday'
     const lastDayIsFriday = this.#getWeekdayString(lastDay) === 'Friday'
 
-    return firstDayIsThursday || (firstDayIsWednesday && this.isLeapYear()) ||
-    lastDayIsThursday || (lastDayIsFriday && this.isLeapYear())
+    return firstDayIsThursday || (firstDayIsWednesday && this.isLeapYear())
+      || lastDayIsThursday || (lastDayIsFriday && this.isLeapYear())
   }
 
   /**
@@ -81,9 +81,7 @@ export default class Year {
    * @returns {string} The day of the week.
    */
   #getWeekdayString (date: Date): string {
-    interface WeekDayMap {
-      [index: number]: string;
-    }
+    type WeekDayMap = Record<number, string>
     const weekdayStringMap: WeekDayMap = {
       0: 'Sunday',
       1: 'Monday',
@@ -91,7 +89,7 @@ export default class Year {
       3: 'Wednesday',
       4: 'Thursday',
       5: 'Friday',
-      6: 'Saturday'
+      6: 'Saturday',
     }
     return weekdayStringMap[date.getDay()]
   }

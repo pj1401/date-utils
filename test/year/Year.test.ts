@@ -5,7 +5,7 @@
  * @version 1.0.0
  */
 
-import {describe, test} from '@jest/globals'
+import { describe, test } from '@jest/globals'
 import YearTester from './YearTester.js'
 
 describe('Year', () => {
