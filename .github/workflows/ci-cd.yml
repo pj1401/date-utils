@@ -10,6 +10,24 @@ permissions:
   contents: read
 
 jobs:
+  # --- Type Check ---
+
+  check-types:
+      # https://nodejs.org/learn/typescript/publishing-a-ts-package#what-to-do-with-your-types
+
+      if: github.event_name == 'push' || github.event_name == 'pull_request'
+      runs-on: ubuntu-latest
+
+      steps:
+        - uses: actions/checkout@v7
+        - uses: actions/setup-node@v4
+          with:
+            node-version-file: '.nvmrc'
+            cache: 'npm'
+        - name: npm clean install
+          run: npm ci
+        - run: node --run types:check
+
   # --- Release ---
 
   release:
