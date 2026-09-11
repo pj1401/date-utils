@@ -11,7 +11,7 @@
     "test:only": "npx --node-options=--experimental-vm-modules jest -t",
     "types:check": "npx tsc --project src/ --noEmit"
   },
-  "files": ["src/"],
+  "files": ["src/**/*.ts"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pj1401/date-utils.git"
