@@ -5,7 +5,7 @@
  * @version 1.0.0
  */
 
-import {describe, expect, test} from '@jest/globals'
+import { describe, expect, test } from '@jest/globals'
 import DateUtil from '../src/DateUtil.js'
 
 describe('DateUtil', () => {
@@ -77,7 +77,7 @@ describe('DateUtil', () => {
         new Date(2025, 9, 30),
         new Date(2025, 9, 31),
         new Date(2025, 10, 1),
-        new Date(2025, 10, 2)
+        new Date(2025, 10, 2),
       ]
 
       const dateUtil = new DateUtil()

@@ -37,7 +37,7 @@ export default class Day {
 
     const days = timeDifference / MILLISECONDS_PER_DAY
 
-    let dayCount = 0
+    let dayCount
     if (days >= 0) {
       // Round up if the date is in the future, to include part of a day.
       dayCount = Math.ceil(days)
