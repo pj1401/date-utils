@@ -3,6 +3,7 @@
     "noEmit": true
   },
   "references": [
-    { "path": "./src/tsconfig.src.json" }
+    { "path": "./src/tsconfig.json" },
+    { "path": "./test/tsconfig.json" }
   ]
 }
