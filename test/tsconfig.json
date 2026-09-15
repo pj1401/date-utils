@@ -1,9 +1,12 @@
 {
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
-    "composite": true
+    "composite": true,
+    "module": "ES2022",
+    "target": "ESNext",
+    "esModuleInterop": true,
   },
   "rootDir": ".",
-  "include": ["*.ts"],
+  "include": ["./**/*.ts", "../src/**/*.ts"],
   "references": [{ "path": "../src/tsconfig.json" }],
 }
