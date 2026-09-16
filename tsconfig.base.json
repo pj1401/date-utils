@@ -12,7 +12,6 @@
     "noImplicitReturns": true,
     "jsx": "preserve",
     "noFallthroughCasesInSwitch": true,
-    "isolatedModules": true,
     "skipLibCheck": true,
     "erasableSyntaxOnly": true
   }
