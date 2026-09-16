@@ -9,7 +9,7 @@
     "lint:fix": "npx eslint ./src ./test --fix || exit 0",
     "test": "npx --node-options=--experimental-vm-modules jest || exit 0",
     "test:only": "npx --node-options=--experimental-vm-modules jest -t",
-    "types:check": "npx tsc --project src/ --noEmit"
+    "types:check": "npx tsc --project ./ --noEmit"
   },
   "files": [
     "src/**/*.ts"

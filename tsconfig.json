@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "references": [
+    { "path": "./src/tsconfig.src.json" },
+    { "path": "./test/tsconfig.test.json" }
+  ]
+}
