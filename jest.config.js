@@ -12,12 +12,20 @@ export default {
     '^.+\\.ts?$': [
       'ts-jest',
       {
-        useESM: true
-      }
-    ]
+        useESM: true,
+        tsconfig: 'tsconfig.test.json',
+      },
+    ],
+    '\\.[jt]sx?$': [
+      'ts-jest',
+      {
+        useESM: true,
+        tsconfig: 'tsconfig.test.json',
+      },
+    ],
   },
   extensionsToTreatAsEsm: ['.ts'],
   moduleNameMapper: {
-    '(.+)\\.js': '$1'
-  }
+    '(.+)\\.js': '$1',
+  },
 }
