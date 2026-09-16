@@ -16,7 +16,7 @@ export default defineConfig(
     {
       files: ['**/*.js', '**/*.ts'],
       plugins: {
-        jsdoc: jsdoc
+        jsdoc: jsdoc,
       },
       rules: {
         '@stylistic/indent': ['error', 2],
@@ -24,16 +24,16 @@ export default defineConfig(
         '@stylistic/brace-style': ['error', '1tbs', { allowSingleLine: true }],
         'jsdoc/require-description': 'warn',
         'jsdoc/tag-lines': ['error' | 'warn', 'any', { startLines: 1 }],
-        "no-unused-vars": "off",
-        "@typescript-eslint/no-unused-vars": [
-          "error", { 
-            "argsIgnorePattern": "^_", 
-            "varsIgnorePattern": "^_",
-            "caughtErrorsIgnorePattern": "^_"
-          }
-        ]
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': [
+          'error', {
+            argsIgnorePattern: '^_',
+            varsIgnorePattern: '^_',
+            caughtErrorsIgnorePattern: '^_',
+          },
+        ],
       },
-      ignores: ['dist/*']
-    }
-  ]
+      ignores: ['dist/*'],
+    },
+  ],
 )
