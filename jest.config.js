@@ -9,7 +9,7 @@ export const transform = {
   '^.+\\.tsx?$': [
     'ts-jest',
     {
-      tsconfig: './tsconfig.test.json',
+      tsconfig: './test/tsconfig.test.json',
       useESM: true,
     },
   ],

@@ -12,7 +12,6 @@
     "types:check": "npx tsc --project ./ --noEmit"
   },
   "files": [
-    "./index.ts",
     "src/**/*.ts"
   ],
   "repository": {
