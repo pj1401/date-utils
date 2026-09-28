@@ -3,17 +3,17 @@
   "version": "1.0.0",
   "description": "Date utilities",
   "type": "module",
-  "exports": "./src/index.js",
+  "exports": "./src/dist/index.js",
   "scripts": {
     "lint": "npx eslint ./src ./test || exit 0",
     "lint:fix": "npx eslint ./src ./test --fix || exit 0",
     "test": "npx --node-options=--experimental-vm-modules jest || exit 0",
     "test:only": "npx --node-options=--experimental-vm-modules jest -t",
-    "prepack": "tsc",
+    "prepack": "tsc --project ./src/tsconfig.src.json",
     "types:check": "npx tsc --project ./ --noEmit"
   },
   "files": [
-    "src/**/*.ts"
+    "src/**/*.js", "src/**/*.d.ts", "src/**/*.js.map"
   ],
   "repository": {
     "type": "git",
