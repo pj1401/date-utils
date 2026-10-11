@@ -1,6 +1,6 @@
 {
-  "name": "date-utils",
-  "version": "1.0.0",
+  "name": "@pj1401/date-utils",
+  "version": "1.2.0",
   "description": "Date utilities",
   "type": "module",
   "exports": "./src/dist/index.js",
@@ -13,7 +13,9 @@
     "types:check": "npx tsc --project ./ --noEmit"
   },
   "files": [
-    "src/**/*.js", "src/**/*.d.ts", "src/**/*.js.map"
+    "src/**/*.js",
+    "src/**/*.d.ts",
+    "src/**/*.js.map"
   ],
   "repository": {
     "type": "git",
@@ -29,7 +31,6 @@
   },
   "homepage": "https://github.com/pj1401/date-utils#readme",
   "license": "MIT",
-  "private": true,
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@jest/globals": "^30.5.2",
