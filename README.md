@@ -2,46 +2,39 @@
 
 This is a collection of utility methods for the `Date` object.
 
+## Install
+
+**Using npm:**
+
+```bash
+npm i @pj1401/date-utils
+```
+
 ## Usage
-
-**Download:**
-
- 1. Click **Code** at the top of the page.
-
- ![GitHub Code button](./docs/github-code-download.png)
-
- 2. Click **Download ZIP**
- 3. The module can now be extracted from the zip file into your project.
 
 **Import:**
 
 ```javaScript
-import { DateUtil } from './modules/date-utils/index.js' // Use the location of the module in your project.
+import { DateUtil } from "@pj1401/date-utils";
 
 const dateUtil = new DateUtil()
 ```
 
-## Table of contents
+**Methods:**
 
- - [Usage](#usage)
- - [Table of contents](#table-of-contents)
- - [Methods](#methods)
-   - [countDays](#countdays)
-   - [getWeekNumber](#getweeknumber)
-   - [getOrdinalDate](#getordinaldate)
-   - [getDaysBetween](#getdaysbetween)
-   - [getDatesBetween](#getdatesbetween)
-   - [getQuarter](#getquarter)
-   - [isBetween](#isbetween)
-   - [startOfWeek](#startofweek)
-   - [endOfWeek](#endofweek)
-   - [getDaysUntilWeekend](#getdaysuntilweekend)
-   - [countWorkingDays](#countworkingdays)
-   - [addDays](#adddays)
-   - [removeDays](#removedays)
- - [Testing](#testing)
-
-## Methods
+ - [countDays](#countdays)
+ - [getWeekNumber](#getweeknumber)
+ - [getOrdinalDate](#getordinaldate)
+ - [getDaysBetween](#getdaysbetween)
+ - [getDatesBetween](#getdatesbetween)
+ - [getQuarter](#getquarter)
+ - [isBetween](#isbetween)
+ - [startOfWeek](#startofweek)
+ - [endOfWeek](#endofweek)
+ - [getDaysUntilWeekend](#getdaysuntilweekend)
+ - [countWorkingDays](#countworkingdays)
+ - [addDays](#adddays)
+ - [removeDays](#removedays)
 
 ### countDays
 
