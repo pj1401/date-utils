@@ -198,11 +198,11 @@ describe('DateUtil', () => {
   describe('getDaysInMonth', () => {
     test('Feb 2024 (leap year)', () => {
       const dateUtil = new DateUtil()
-      expect(dateUtil.getDaysInMonth(2024, 2)).toEqual(29)
+      expect(dateUtil.getDaysInMonth(2024, 1)).toEqual(29)
     })
     test('Feb 2026', () => {
       const dateUtil = new DateUtil()
-      expect(dateUtil.getDaysInMonth(2026, 2)).toEqual(28)
+      expect(dateUtil.getDaysInMonth(2026, 1)).toEqual(28)
     })
   })
 })
