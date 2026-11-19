@@ -9,7 +9,7 @@
  */
 export default class Month {
   /**
-   * An integer that represents the month.
+   * An integer that represents the month. 0 represents January.
    *
    * @type {number}
    */
@@ -22,6 +22,19 @@ export default class Month {
    */
   constructor (date: Date) {
     this.#month = date.getMonth()
+  }
+
+  /**
+   * Get the number of days in the month, depending on the year.
+   * @param {number} year The year the month is in.
+   * @returns {number} A number representing the last day in the month.
+   */
+  getDaysInMonth (year: number): number {
+    // From: https://stackoverflow.com/a/1185804
+    // Setting the day value in the Date constructor to 0 will give the last day of the previous month.
+    // Add +1 to the month value to get the last day of the current month.
+    const date = new Date(year, this.#month + 1, 0)
+    return date.getDate()
   }
 
   /**
