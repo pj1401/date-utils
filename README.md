@@ -27,6 +27,7 @@ const dateUtil = new DateUtil()
  - [getOrdinalDate](#getordinaldate)
  - [getDaysBetween](#getdaysbetween)
  - [getDatesBetween](#getdatesbetween)
+ - [getDaysInMonth](#getdaysinmonth)
  - [getQuarter](#getquarter)
  - [isBetween](#isbetween)
  - [startOfWeek](#startofweek)
@@ -89,6 +90,24 @@ Get an array of dates between two dates, inclusive.
 
 ```javaScript
 dateUtil.getDatesBetween(new Date('2025-10-25'), new Date('2025-11-02'))
+```
+
+### getDaysInMonth
+
+**getDaysInMonth(year: number, month: number): number**
+
+Get the number of days in the month, depending on the year.
+The month index is zero-based. This means that 0 represents January.
+
+```javaScript
+// Feb 2024
+dateUtil.getDaysInMonth(2024, 1) // returns 29
+
+// Feb 2026
+dateUtil.getDaysInMonth(2026, 1) // returns 28
+
+// Can be imported as a function.
+import { getDaysInMonth } from "@pj1401/date-utils";
 ```
 
 ### getQuarter
