@@ -71,6 +71,17 @@ export default class DateUtil {
   }
 
   /**
+   * Get the number of days in the month, depending on the year.
+   * @param {number} year The year the month is in.
+   * @param {number} month The number representing the month. Zero-based, 0 represents January.
+   * @returns {number} A number representing the last day in the month.
+   */
+  getDaysInMonth (year: number, month: number): number {
+    const monthCalc = new Month(new Date(year, month))
+    return monthCalc.getDaysInMonth(year)
+  }
+
+  /**
    * Get the quarter of the year the date is in.
    *
    * @param {Date} date - The specified date.
