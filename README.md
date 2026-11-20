@@ -29,6 +29,7 @@ const dateUtil = new DateUtil()
  - [getDatesBetween](#getdatesbetween)
  - [getDaysInMonth](#getdaysinmonth)
  - [getFirstDayOfMonth](#getfirstdayofmonth)
+ - [getMonthDays](#getmonthdays)
  - [getQuarter](#getquarter)
  - [isBetween](#isbetween)
  - [startOfWeek](#startofweek)
@@ -123,6 +124,20 @@ dateUtil.getFirstDayOfMonth(2026, 9) // returns 4
 
 // Nov 2026 Sunday
 dateUtil.getFirstDayOfMonth(2026, 10) // returns 0
+```
+
+### getMonthDays
+
+**getMonthDays(year: number, month: number): number**
+
+Get a number sequence representing the days in a month.
+
+```javaScript
+// Feb 2024
+dateUtil.getMonthDays(2024, 1) // returns [1, 2, ..., 29]
+
+// Feb 2026
+dateUtil.getMonthDays(2026, 1) // returns [1, 2, ..., 28]
 ```
 
 ### getQuarter
