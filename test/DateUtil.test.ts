@@ -220,4 +220,22 @@ describe('DateUtil', () => {
       expect(dateUtil.getFirstDayOfMonth(2026, 11)).toEqual(2)
     })
   })
+
+  describe('getMonthDays', () => {
+    test('Feb 2024 (leap year)', () => {
+      const dateUtil = new DateUtil()
+      const days = Array.from({ length: 29 }, (v, i) => i + 1)
+      expect(dateUtil.getMonthDays(2024, 1)).toEqual(days)
+    })
+    test('Feb 2026', () => {
+      const dateUtil = new DateUtil()
+      const days = Array.from({ length: 28 }, (v, i) => i + 1)
+      expect(dateUtil.getMonthDays(2026, 1)).toEqual(days)
+    })
+    test('Oct 2026', () => {
+      const dateUtil = new DateUtil()
+      const days = Array.from({ length: 31 }, (v, i) => i + 1)
+      expect(dateUtil.getMonthDays(2026, 9)).toEqual(days)
+    })
+  })
 })

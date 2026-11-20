@@ -35,4 +35,22 @@ describe('Month', () => {
       expect(month.getFirstDayOfMonth(2026)).toEqual(2)
     })
   })
+
+  describe('getMonthDays', () => {
+    test('Feb 2024 (leap year)', () => {
+      const month = new Month(new Date('2024-02'))
+      const days = Array.from({ length: 29 }, (v, i) => i + 1)
+      expect(month.getMonthDays(2024)).toEqual(days)
+    })
+    test('Feb 2026', () => {
+      const month = new Month(new Date('2026-02'))
+      const days = Array.from({ length: 28 }, (v, i) => i + 1)
+      expect(month.getMonthDays(2026)).toEqual(days)
+    })
+    test('Oct 2026', () => {
+      const month = new Month(new Date('2026-10'))
+      const days = Array.from({ length: 31 }, (v, i) => i + 1)
+      expect(month.getMonthDays(2026)).toEqual(days)
+    })
+  })
 })
