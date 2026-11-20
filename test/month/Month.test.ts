@@ -20,4 +20,19 @@ describe('Month', () => {
       expect(month.getDaysInMonth(2026)).toEqual(31)
     })
   })
+
+  describe('getFirstDayOfMonth', () => {
+    test('Oct 2026 Thursday (4)', () => {
+      const month = new Month(new Date('2026-10'))
+      expect(month.getFirstDayOfMonth(2026)).toEqual(4)
+    })
+    test('Nov 2026 Sunday (0)', () => {
+      const month = new Month(new Date('2026-11'))
+      expect(month.getFirstDayOfMonth(2026)).toEqual(0)
+    })
+    test('Dec 2026 Tuesday (2)', () => {
+      const month = new Month(new Date('2026-12'))
+      expect(month.getFirstDayOfMonth(2026)).toEqual(2)
+    })
+  })
 })
