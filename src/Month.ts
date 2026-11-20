@@ -48,6 +48,16 @@ export default class Month {
   }
 
   /**
+   * Get a number sequence representing the days in a month
+   * @param {number} year The year the month is in.
+   * @returns {number[]} A sequence of numbers representing the days in the month.
+   */
+  getMonthDays (year: number): number[] {
+    const daysInMonth = this.getDaysInMonth(year)
+    return Array.from({ length: daysInMonth }, (v, i) => i + 1)
+  }
+
+  /**
    * Get the quarter of the year the month is in.
    *
    * @returns {number} A number representing the quarter of the year.
