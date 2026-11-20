@@ -54,7 +54,7 @@ export default class Month {
    */
   getMonthDays (year: number): number[] {
     const daysInMonth = this.getDaysInMonth(year)
-    return Array.from({ length: daysInMonth }, (v, i) => i + 1)
+    return Array.from({ length: daysInMonth }, (_, i) => i + 1)
   }
 
   /**
