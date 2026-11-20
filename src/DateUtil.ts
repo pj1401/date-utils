@@ -82,6 +82,17 @@ export default class DateUtil {
   }
 
   /**
+   * Get the day of the week represented by a number. 0 represents Sunday.
+   * @param {number} year The year the month is in.
+   * @param {number} month The number representing the month. Zero-based, 0 represents January.
+   * @returns {number} A number representing the day of the week.
+   */
+  getFirstDayOfMonth (year: number, month: number): number {
+    const monthCalc = new Month(new Date(year, month))
+    return monthCalc.getFirstDayOfMonth(year)
+  }
+
+  /**
    * Get the quarter of the year the date is in.
    *
    * @param {Date} date - The specified date.

@@ -205,4 +205,19 @@ describe('DateUtil', () => {
       expect(dateUtil.getDaysInMonth(2026, 1)).toEqual(28)
     })
   })
+
+  describe('getFirstDayOfMonth', () => {
+    test('Oct 2026 Thursday (4)', () => {
+      const dateUtil = new DateUtil()
+      expect(dateUtil.getFirstDayOfMonth(2026, 9)).toEqual(4)
+    })
+    test('Nov 2026 Sunday (0)', () => {
+      const dateUtil = new DateUtil()
+      expect(dateUtil.getFirstDayOfMonth(2026, 10)).toEqual(0)
+    })
+    test('Dec 2026 Tuesday (2)', () => {
+      const dateUtil = new DateUtil()
+      expect(dateUtil.getFirstDayOfMonth(2026, 11)).toEqual(2)
+    })
+  })
 })
