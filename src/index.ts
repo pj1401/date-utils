@@ -22,4 +22,15 @@ function getFirstDayOfMonth (year: number, month: number): number {
   return dateUtil.getFirstDayOfMonth(year, month)
 }
 
-export { DateUtil, getDaysInMonth, getFirstDayOfMonth }
+/**
+ * Get a number sequence representing the days in a month
+ * @param {number} year The year the month is in.
+ * @param {number} month The number representing the month. Zero-based, 0 represents January.
+ * @returns {number[]} A sequence of numbers representing the days in the month.
+ */
+function getMonthDays (year: number, month: number): number[] {
+  const dateUtil = new DateUtil()
+  return dateUtil.getMonthDays(year, month)
+}
+
+export { DateUtil, getDaysInMonth, getFirstDayOfMonth, getMonthDays }

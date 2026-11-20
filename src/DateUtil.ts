@@ -93,6 +93,17 @@ export default class DateUtil {
   }
 
   /**
+   * Get a number sequence representing the days in a month
+   * @param {number} year The year the month is in.
+   * @param {number} month The number representing the month. Zero-based, 0 represents January.
+   * @returns {number[]} A sequence of numbers representing the days in the month.
+   */
+  getMonthDays (year: number, month: number): number[] {
+    const monthCalc = new Month(new Date(year, month))
+    return monthCalc.getMonthDays(year)
+  }
+
+  /**
    * Get the quarter of the year the date is in.
    *
    * @param {Date} date - The specified date.
