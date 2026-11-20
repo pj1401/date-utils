@@ -28,6 +28,7 @@ const dateUtil = new DateUtil()
  - [getDaysBetween](#getdaysbetween)
  - [getDatesBetween](#getdatesbetween)
  - [getDaysInMonth](#getdaysinmonth)
+ - [getFirstDayOfMonth](#getfirstdayofmonth)
  - [getQuarter](#getquarter)
  - [isBetween](#isbetween)
  - [startOfWeek](#startofweek)
@@ -108,6 +109,20 @@ dateUtil.getDaysInMonth(2026, 1) // returns 28
 
 // Can be imported as a function.
 import { getDaysInMonth } from "@pj1401/date-utils";
+```
+
+### getFirstDayOfMonth
+
+**getFirstDayOfMonth(year: number, month: number): number**
+
+Get the day of the week represented by a number. 0 represents Sunday.
+
+```javaScript
+// Oct 2026 Thursday
+dateUtil.getFirstDayOfMonth(2026, 9) // returns 4
+
+// Nov 2026 Sunday
+dateUtil.getFirstDayOfMonth(2026, 10) // returns 0
 ```
 
 ### getQuarter
