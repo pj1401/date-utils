@@ -38,6 +38,16 @@ export default class Month {
   }
 
   /**
+   * Get the day of the week represented by a number. 0 represents Sunday.
+   * @param {number} year The year the month is in.
+   * @returns {number} A number representing the day of the week.
+   */
+  getFirstDayOfMonth (year: number): number {
+    const date = new Date(year, this.#month, 1)
+    return date.getDay()
+  }
+
+  /**
    * Get the quarter of the year the month is in.
    *
    * @returns {number} A number representing the quarter of the year.
